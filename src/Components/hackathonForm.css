@@ -1,0 +1,26 @@
+.form-page{
+    background-color: rgb(248,249,253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.form-page .hackathon-form{
+    background-color: #fff;
+    width: 70%;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+.hackathon-form h2{
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.hackathon-form .form-heading{
+    font-size: 0.8rem;
+}
+.hackathon-form .form-input button{
+    width: 100%;
+    height: 50%;
+    margin-bottom: 1%;
+}
