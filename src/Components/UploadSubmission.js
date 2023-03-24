@@ -15,7 +15,6 @@ const UploadSubmission = () => {
           eget suspendisse ac pharetra amet. Vel nisl tempus nec vitae.
         </p>
         <Button onClick={() => history.push("/submitHackathonIdea")}>
-          {" "}
           Upload Submission
         </Button>
       </div>

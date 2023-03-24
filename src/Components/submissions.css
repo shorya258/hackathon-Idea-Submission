@@ -1,3 +1,16 @@
 .menu{
     background-color: rgb(248,249,253);
 }
+.container{
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.active-btn{
+    background-color: green;
+}
+.inactive-btn{
+    background-color: red;
+}

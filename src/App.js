@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import HackathonForm from "./Components/HackathonForm";
 import { Route, Switch } from "react-router-dom";
+import ExpandCard from "./Components/ExpandCard";
 function App() {
   return (
     <>
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route exact path="/submitHackathonIdea">
           <HackathonForm />
+        </Route>
+        <Route exact path="/ideaDetails">
+          <ExpandCard />
         </Route>
       </Switch>
     </>
