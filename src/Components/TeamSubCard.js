@@ -30,6 +30,18 @@ const TeamSubCard = (props) => {
       },
     });
   };
+  const getUploadedDaysByDate=(date) => {
+    const uploadedDate= new Date(date);
+    const currentDate = new Date();
+    const uploadedDays = Math.floor((currentDate- uploadedDate)/(1000*60*60*24)) ;
+    console.log("uploadedDate", uploadedDate, "currentDate", currentDate,);
+    if(uploadedDays===0){
+      return "Uploaded just now";
+    }
+    else{
+      return `${uploadedDays}days ago`;
+    }
+  }
   return (
     <div>
       <Card sx={{ width: "300px" }} className="card-wrapper">
@@ -45,7 +57,9 @@ const TeamSubCard = (props) => {
             {title}
           </Typography>
           <Typography className="card-summary">{summary}</Typography>
-          <Typography className="card-date">{date}</Typography>
+          <Typography className="card-date">
+            {getUploadedDaysByDate(date)}
+            </Typography>
         </CardContent>
       </Card>
     </div>

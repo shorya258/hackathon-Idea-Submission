@@ -30,8 +30,8 @@ export default function Submissions() {
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et nihil consectetur, ab ratione molestias voluptatibus non soluta provident aliquam possimus facere explicabo minima in commodi dignissimos fugiat, eaque tenetur veritatis sapiente ullam quasi! Maiores quas distinctio itaque voluptatum facere doloremque dignissimos earum reiciendis fugiat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et nihil consectetur, ab ratione molestias voluptatibus non soluta provident aliquam possimus facere explicabo minima in commodi dignissimos fugiat, eaque tenetur veritatis sapiente ullam quasi! Maiores quas distinctio itaque voluptatum facere doloremque dignissimos earum reiciendis fugiat!",
       isFavourite: false,
-      date: "Uploaded 6 days ago",
-      dateID: "6",
+      date: new Date(new Date().getTime()-(6*24*60*60*1000)) ,
+      // dateID: "6",
       coverImg: img1,
     },
     // {
@@ -59,8 +59,8 @@ export default function Submissions() {
       description:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam temporibus quam nobis consequuntur quos accusamus exercitationem veniam laboriosam tempora voluptatum, consequatur in assumenda ut commodi excepturi, mollitia dolores optio dignissimos! Quas, quibusdam! Mollitia magni porro fugit dignissimos temporibus excepturi illo eaque dicta, soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.",
       isFavourite: false,
-      date: "Uploaded 8 days ago",
-      dateID: "8",
+      date: new Date(new Date().getTime()-(8*24*60*60*1000)) ,
+      // dateID: "8",
       coverImg: img2,
     },
     // {
@@ -140,8 +140,8 @@ export default function Submissions() {
       );
     }
     console.log("use eff storedSubmissions", storedSubmissions);
-    setAllSubmissions([...storedSubmissions]);
-    setFilteredSubmissions([...storedSubmissions]);
+    setAllSubmissions(storedSubmissions);
+    setFilteredSubmissions(storedSubmissions);
   }, []);
 
   return (

@@ -8,8 +8,10 @@ import { Description } from "@mui/icons-material";
 const ExpandCard = () => {
   const location = useLocation();
   let storedSubmissions = JSON.parse(localStorage.getItem("storedSubmissions"));
+  const myObj= location.state;
   const uniqueID = location.state.uniqueID;
   const title = location.state.title;
+  const coverImg = location.state.coverImg;
   const summary = location.state.summary;
   const description = location.state.description;
   const date = location.state.date;
@@ -43,7 +45,7 @@ const ExpandCard = () => {
       <div className="idea-heading">
         <div className="content-wrapper">
           <h1 className="heading">{title}</h1>
-
+          <img src={coverImg} className="card-img" />
           {!isFavourite && <StarBorderOutlinedIcon onClick={handleFavourite} />}
           <p>{summary}</p>
           {isFavourite && <StarIcon onClick={handleFavourite} />}
@@ -52,8 +54,8 @@ const ExpandCard = () => {
 
           <p>{date}</p>
         </div>
-        <div className="description">{description}</div>
       </div>
+        <div className="description">{description}</div>
     </div>
   );
 };
