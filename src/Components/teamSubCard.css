@@ -1,4 +1,6 @@
 .card-wrapper{
-    margin-right: 30px;
+    margin: 20px;
+    box-shadow: 20px;
     cursor: pointer !important;
+    /* margin-bottom: 30px; */
 }

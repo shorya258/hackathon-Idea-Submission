@@ -3,7 +3,15 @@ import React from "react";
 import { useHistory, useNavigate } from "react-router-dom";
 import "./teamSubCard.css";
 const TeamSubCard = (props) => {
-  let { uniqueID, title, coverImage, summary, date, isFavourite } = props;
+  let {
+    uniqueID,
+    title,
+    coverImage,
+    summary,
+    date,
+    isFavourite,
+    presentSubmissions,
+  } = props;
   let history = useHistory();
 
   const handleExpandCard = () => {
@@ -15,12 +23,13 @@ const TeamSubCard = (props) => {
         summary: summary,
         date: date,
         isFavourite: isFavourite,
+        presentSubmissions: presentSubmissions,
       },
     });
   };
   return (
     <div>
-      <Card sx={{ maxWidth: "360px" }} className="card-wrapper">
+      <Card sx={{ width: "300px" }} className="card-wrapper">
         <CardContent className="card-content" onClick={handleExpandCard}>
           <Typography
             className="card-heading"

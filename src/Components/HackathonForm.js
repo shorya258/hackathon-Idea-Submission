@@ -5,7 +5,9 @@ import Button from "muicss/lib/react/button";
 import "./hackathonForm.css";
 import Upload from "../assets/Upload.png";
 import { Image } from "@mui/icons-material";
+import { useHistory } from "react-router-dom";
 export default function HackathonForm() {
+  let history = useHistory();
   // const [uniqueId, setUniqueId] = useState("");
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -39,6 +41,7 @@ export default function HackathonForm() {
         JSON.stringify(storedSubmissions)
       );
     }
+    history.push("/");
   };
 
   return (
@@ -50,6 +53,7 @@ export default function HackathonForm() {
           <Input
             placeholder="Title of your submission"
             value={title}
+            required={true}
             onChange={(e) => {
               setTitle(e.target.value);
             }}
@@ -60,6 +64,7 @@ export default function HackathonForm() {
           <Input
             placeholder="A short summary of your submission. This will be visible with your submission"
             value={summary}
+            required={true}
             onChange={(e) => {
               setSummary(e.target.value);
             }}
@@ -80,7 +85,10 @@ export default function HackathonForm() {
         </div>
         <div className="form-input">
           <legend className="form-heading">Hackathon Name</legend>
-          <Input placeholder="Enter the name of the hackathon." />
+          <Input
+            required={true}
+            placeholder="Enter the name of the hackathon."
+          />
         </div>
 
         <Button

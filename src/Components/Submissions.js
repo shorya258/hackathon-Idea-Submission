@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -20,20 +21,56 @@ export default function Submissions() {
   const [currentSorting, setCurrentSorting] = useState("");
   const [hardCodedSubmissions, setHardCodedSubmissions] = useState([
     {
-      uniqueID:
-        new Date().getTime().toString() + Math.floor(Math.random() * 10 + 1),
+      uniqueID: 101,
       title: "InterView Me",
       summary:
         "Built with GPT-3, React, and Flask. Practice interviews with AI and ace your next interview.",
       isFavourite: false,
+      date: "Uploaded 6 days ago",
+      dateID: "6",
     },
     {
-      uniqueID:
-        new Date().getTime().toString() + Math.floor(Math.random() * 10 + 1),
-      title: "Pirate Ipsum",
+      uniqueID: 102,
+      title: "Lorem Ipsum",
       summary:
-        "Shiver to tender hempen brig quarterdeck jolly pay. Furl sail crimp furl pinnace",
+        "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
       isFavourite: false,
+      date: "Uploaded 8 days ago",
+      dateID: "8",
+    },
+    {
+      uniqueID: 103,
+      title: "Pizza Ipsum",
+      summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
+      isFavourite: false,
+      date: "Uploaded 12 days ago",
+      dateID: "12",
+    },
+    {
+      uniqueID: 104,
+      title: "Potter Ipsum",
+      summary:
+        "Potter ipsum wand elf parchment wingardium. Ghost glass hall tears hair must train. Snape alohamora bathrooms.",
+      isFavourite: false,
+      date: "Uploaded 8 days ago",
+      dateID: "8",
+    },
+    {
+      uniqueID: 105,
+      title: "Figma Ipsum",
+      summary:
+        "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
+      isFavourite: false,
+      date: "Uploaded 16 days ago",
+      dateID: "16",
+    },
+    {
+      uniqueID: 106,
+      title: "Office Ipsum",
+      summary: "Office ipsum you must be muted.",
+      isFavourite: false,
+      date: "Uploaded 28 days ago",
+      dateID: "28",
     },
   ]);
   const handleShowFavourite = (currentValue) => {
@@ -54,7 +91,6 @@ export default function Submissions() {
       setFilteredSubmissions(currentSub);
     } else {
       setFilteredSubmissions(allSubmissions);
-      //   titleGotSearched();
     }
   };
   const handleSearchBar = (searchedValue) => {
@@ -89,6 +125,13 @@ export default function Submissions() {
     const storedSubmissions = JSON.parse(
       localStorage.getItem("storedSubmissions")
     );
+    if (storedSubmissions.length === 0) {
+      localStorage.setItem(
+        "storedSubmissions",
+        JSON.stringify(hardCodedSubmissions)
+      );
+      console.log("use eff storedSubmissions", storedSubmissions);
+    }
     // console.log("storedSubmissions", storedSubmissions);
     // console.log("...storedSubmissions", ...storedSubmissions);
     if (storedSubmissions != null) {
@@ -102,29 +145,35 @@ export default function Submissions() {
 
   return (
     <div className="menu">
-      <Toolbar>
-        <button
-          className={showFavourite ? "inactive-btn" : "active-btn"}
+      <Toolbar className="menu-bar">
+        <Button
+          className={
+            showFavourite ? "menu-btn inactive-btn" : "menu-btn active-btn"
+          }
           onClick={() => handleShowFavourite("all")}
         >
           All submissions
-        </button>
-        <button
-          className={showFavourite ? "active-btn" : "inactive-btn"}
+        </Button>
+        <Button
+          className={
+            showFavourite ? "menu-btn active-btn" : "menu-btn inactive-btn"
+          }
           onClick={() => handleShowFavourite("fav")}
         >
-          {" "}
-          Favourite Submission
-        </button>
-        <div className="searchOpt">
+          Favourite submissions
+        </Button>
+
+        <div className="search-opt">
           <SearchIcon onClick={titleGotSearched} />
           <input
+            className="search-input"
             type="text"
             value={searchTerm}
+            placeholder="Search"
             onChange={(e) => handleSearchBar(e.target.value)}
           />
         </div>
-        <FormControl sx={{ width: "100px" }}>
+        <FormControl sx={{ width: "100px" }} className="drop-down">
           <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -139,7 +188,7 @@ export default function Submissions() {
         </FormControl>
       </Toolbar>
 
-      <Container className="container">
+      <Container className="cards-display">
         {!toggleAllSubmissions &&
           filteredSubmissions.map((singleIdea) => {
             return (
@@ -148,8 +197,9 @@ export default function Submissions() {
                 uniqueID={singleIdea.uniqueID}
                 title={singleIdea.title}
                 summary={singleIdea.summary}
-                date="Uploaded 6 days ago"
+                date={singleIdea.date}
                 isFavourite={singleIdea.isFavourite}
+                presentSubmissions={filteredSubmissions}
               />
             );
           })}

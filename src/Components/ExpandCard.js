@@ -1,6 +1,9 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
+import StarIcon from "@mui/icons-material/Star";
+import "./expandCard.css";
 const ExpandCard = () => {
   const location = useLocation();
   let storedSubmissions = JSON.parse(localStorage.getItem("storedSubmissions"));
@@ -9,11 +12,15 @@ const ExpandCard = () => {
   const summary = location.state.summary;
   const date = location.state.date;
   const isFavourite = location.state.isFavourite;
-  //   console.log("prop",isFavourite);
+  const presentSubmissions = location.state.presentSubmissions;
+  console.log("presentSubmissions", presentSubmissions);
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
 
   const handleFavourite = () => {
+    storedSubmissions =
+      storedSubmissions == null ? presentSubmissions : storedSubmissions;
+
     for (let i = 0; i < storedSubmissions.length; i++) {
       var singleSubmission = storedSubmissions[i];
       if (singleSubmission.uniqueID === uniqueID) {
@@ -26,21 +33,24 @@ const ExpandCard = () => {
         );
       }
     }
-    console.log(storedSubmissions);
+    console.log("storedSubmissions", storedSubmissions);
   };
 
   return (
-    <>
+    <div className="expanded-card-wrapper">
       <div className="idea-heading">
         <div className="content-wrapper">
           <h1 className="heading">{title}</h1>
-          <button onClick={handleFavourite}>fav </button>
+
+          {!isFavourite && <StarBorderOutlinedIcon onClick={handleFavourite} />}
+          {isFavourite && <StarIcon onClick={handleFavourite} />}
+
           <span>{currentFavouriteState ? "yes" : "no"}</span>
           <p>{summary}</p>
           <p>{date}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default ExpandCard;
