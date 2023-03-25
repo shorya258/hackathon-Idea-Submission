@@ -11,6 +11,8 @@ import "./submissions.css";
 import SearchIcon from "@mui/icons-material/Search";
 import TeamSubCard from "./TeamSubCard";
 import { Container } from "muicss/react";
+import img1 from "../assets/Image.png";
+import img2 from "../assets/potterImg.png";
 
 export default function Submissions() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,53 +27,59 @@ export default function Submissions() {
       title: "InterView Me",
       summary:
         "Built with GPT-3, React, and Flask. Practice interviews with AI and ace your next interview.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et nihil consectetur, ab ratione molestias voluptatibus non soluta provident aliquam possimus facere explicabo minima in commodi dignissimos fugiat, eaque tenetur veritatis sapiente ullam quasi! Maiores quas distinctio itaque voluptatum facere doloremque dignissimos earum reiciendis fugiat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia et nihil consectetur, ab ratione molestias voluptatibus non soluta provident aliquam possimus facere explicabo minima in commodi dignissimos fugiat, eaque tenetur veritatis sapiente ullam quasi! Maiores quas distinctio itaque voluptatum facere doloremque dignissimos earum reiciendis fugiat!",
       isFavourite: false,
       date: "Uploaded 6 days ago",
       dateID: "6",
+      coverImg: img1,
     },
-    {
-      uniqueID: 102,
-      title: "Lorem Ipsum",
-      summary:
-        "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
-      isFavourite: false,
-      date: "Uploaded 8 days ago",
-      dateID: "8",
-    },
-    {
-      uniqueID: 103,
-      title: "Pizza Ipsum",
-      summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
-      isFavourite: false,
-      date: "Uploaded 12 days ago",
-      dateID: "12",
-    },
+    // {
+    //   uniqueID: 102,
+    //   title: "Lorem Ipsum",
+    //   summary:
+    //     "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
+    //   isFavourite: false,
+    //   date: "Uploaded 8 days ago",
+    //   dateID: "8",
+    // },
+    // {
+    //   uniqueID: 103,
+    //   title: "Pizza Ipsum",
+    //   summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
+    //   isFavourite: false,
+    //   date: "Uploaded 12 days ago",
+    //   dateID: "12",
+    // },
     {
       uniqueID: 104,
       title: "Potter Ipsum",
       summary:
         "Potter ipsum wand elf parchment wingardium. Ghost glass hall tears hair must train. Snape alohamora bathrooms.",
+      description:
+        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam temporibus quam nobis consequuntur quos accusamus exercitationem veniam laboriosam tempora voluptatum, consequatur in assumenda ut commodi excepturi, mollitia dolores optio dignissimos! Quas, quibusdam! Mollitia magni porro fugit dignissimos temporibus excepturi illo eaque dicta, soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.",
       isFavourite: false,
       date: "Uploaded 8 days ago",
       dateID: "8",
+      coverImg: img2,
     },
-    {
-      uniqueID: 105,
-      title: "Figma Ipsum",
-      summary:
-        "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
-      isFavourite: false,
-      date: "Uploaded 16 days ago",
-      dateID: "16",
-    },
-    {
-      uniqueID: 106,
-      title: "Office Ipsum",
-      summary: "Office ipsum you must be muted.",
-      isFavourite: false,
-      date: "Uploaded 28 days ago",
-      dateID: "28",
-    },
+    // {
+    //   uniqueID: 105,
+    //   title: "Figma Ipsum",
+    //   summary:
+    //     "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
+    //   isFavourite: false,
+    //   date: "Uploaded 16 days ago",
+    //   dateID: "16",
+    // },
+    // {
+    //   uniqueID: 106,
+    //   title: "Office Ipsum",
+    //   summary: "Office ipsum you must be muted.",
+    //   isFavourite: false,
+    //   date: "Uploaded 28 days ago",
+    //   dateID: "28",
+    // },
   ]);
   const handleShowFavourite = (currentValue) => {
     if (currentValue === "all") {
@@ -125,22 +133,15 @@ export default function Submissions() {
     const storedSubmissions = JSON.parse(
       localStorage.getItem("storedSubmissions")
     );
-    if (storedSubmissions.length === 0) {
+    if (storedSubmissions == null) {
       localStorage.setItem(
         "storedSubmissions",
         JSON.stringify(hardCodedSubmissions)
       );
-      console.log("use eff storedSubmissions", storedSubmissions);
     }
-    // console.log("storedSubmissions", storedSubmissions);
-    // console.log("...storedSubmissions", ...storedSubmissions);
-    if (storedSubmissions != null) {
-      setAllSubmissions([...storedSubmissions, ...hardCodedSubmissions]);
-      setFilteredSubmissions([...storedSubmissions, ...hardCodedSubmissions]);
-    } else {
-      setAllSubmissions(hardCodedSubmissions);
-      setFilteredSubmissions(hardCodedSubmissions);
-    }
+    console.log("use eff storedSubmissions", storedSubmissions);
+    setAllSubmissions([...storedSubmissions]);
+    setFilteredSubmissions([...storedSubmissions]);
   }, []);
 
   return (
@@ -197,8 +198,10 @@ export default function Submissions() {
                 uniqueID={singleIdea.uniqueID}
                 title={singleIdea.title}
                 summary={singleIdea.summary}
+                description={singleIdea.description}
                 date={singleIdea.date}
                 isFavourite={singleIdea.isFavourite}
+                coverImg={singleIdea.coverImg}
                 presentSubmissions={filteredSubmissions}
               />
             );
