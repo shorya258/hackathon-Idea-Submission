@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 import "./submissions.css";
 import SearchIcon from "@mui/icons-material/Search";
 import TeamSubCard from "./TeamSubCard";
-import { Container } from "muicss/react";
+// import { div } from "/react";
 import img1 from "../assets/Image.png";
 import img2 from "../assets/potterImg.png";
 
@@ -189,7 +189,7 @@ export default function Submissions() {
         </FormControl>
       </Toolbar>
 
-      <Container className="cards-display">
+      <div className="cards-display">
         {!toggleAllSubmissions &&
           filteredSubmissions.map((singleIdea) => {
             return (
@@ -236,7 +236,7 @@ export default function Submissions() {
         )} */}
 
         {/* {toggleAllSubmissions && <TeamSubCard title={searchTerm} />} */}
-      </Container>
+      </div>
     </div>
   );
 }

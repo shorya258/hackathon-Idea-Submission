@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Form from "muicss/lib/react/form";
-import Input from "muicss/lib/react/input";
-import Button from "muicss/lib/react/button";
+// import form from "muicss/lib/react/form";
+// import input from "muicss/lib/react/input";
+// import button from "muicss/lib/react/button";
 import "./hackathonForm.css";
 import Upload from "../assets/Upload.png";
 import { Image } from "@mui/icons-material";
@@ -46,11 +46,11 @@ export default function HackathonForm() {
 
   return (
     <div className="form-page">
-      <Form className="hackathon-form">
+      <form className="hackathon-form">
         <h2>New Hackathon Submission</h2>
         <div className="form-input">
           <legend className="form-heading">Title</legend>
-          <Input
+          <input
             placeholder="Title of your submission"
             value={title}
             required={true}
@@ -61,7 +61,7 @@ export default function HackathonForm() {
         </div>
         <div className="form-input">
           <legend className="form-heading">Summary</legend>
-          <Input
+          <input
             placeholder="A short summary of your submission. This will be visible with your submission"
             value={summary}
             required={true}
@@ -72,34 +72,34 @@ export default function HackathonForm() {
         </div>
         <div className="form-input">
           <legend className="form-heading">Description</legend>
-          <Input placeholder="Write a long description of your project. You can describe your idea and approach here." />
+          <input placeholder="Write a long description of your project. You can describe your idea and approach here." />
           <p>0/300 characters</p>
         </div>
         <div className="form-input">
           <legend className="form-heading">Cover Image</legend>
           <p>Minimum Resolution: 360px X 360px</p>
-          <Button variant="contained" component="label">
+          <button variant="contained" component="label">
             <input type="file" hidden />
             <img src={Upload} alt="upload button" />
-          </Button>
+          </button>
         </div>
         <div className="form-input">
           <legend className="form-heading">Hackathon Name</legend>
-          <Input
+          <input
             required={true}
             placeholder="Enter the name of the hackathon."
           />
         </div>
 
-        <Button
+        <button
           variant="raised"
           onClick={(e) => {
             handleSubmitHackathon(e);
           }}
         >
           Submit
-        </Button>
-      </Form>
+        </button>
+      </form>
     </div>
   );
 }
