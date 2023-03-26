@@ -6,7 +6,14 @@ import StarIcon from "@mui/icons-material/Star";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./expandCard.css";
-import { Description, Edit } from "@mui/icons-material";
+import {
+  CalendarMonth,
+  CalendarMonthOutlined,
+  CalendarToday,
+  CalendarViewMonth,
+  Description,
+  Edit,
+} from "@mui/icons-material";
 const ExpandCard = () => {
   const location = useLocation();
   let history = useHistory();
@@ -73,7 +80,7 @@ const ExpandCard = () => {
     if (uploadedDays === 0) {
       return "Uploaded just now";
     } else {
-      return `${uploadedDays}days ago`;
+      return `${uploadedDays} days ago`;
     }
   };
 
@@ -81,27 +88,45 @@ const ExpandCard = () => {
     <>
       <div className="expanded-card-wrapper">
         <div className="idea-heading">
-          <div className="content-wrapper">
-            <h1 className="heading">{title}</h1>
-            <img src={coverImg} className="card-img" />
-            {!isFavourite && (
-              <StarBorderOutlinedIcon onClick={handleFavourite} />
-            )}
-            <p>{summary}</p>
-            {isFavourite && <StarIcon onClick={handleFavourite} />}
+          <div className="expanded-content-wrapper">
+            <div className="heading-wrapper">
+              <img src={coverImg} className="expanded-card-img" />
+              <h1 className="expanded-heading">{title}</h1>
+            </div>
+            <p className="summary-text">{summary}</p>
+            <div className="content-footer-wrapper">
+              {currentFavouriteState ? (
+                <StarIcon
+                  className="favourite-icon"
+                  onClick={handleFavourite}
+                />
+              ) : (
+                <StarBorderOutlinedIcon
+                  className="favourite-icon"
+                  onClick={handleFavourite}
+                />
+              )}
+              <p className="uploaded-date-text">
+                {<CalendarToday className="calender-icon" />}
 
-            <span>{currentFavouriteState ? "yes" : "no"}</span>
-
-            <p> {getUploadedDaysByDate(date)}</p>
+                <span>{getUploadedDaysByDate(date)}</span>
+              </p>
+            </div>
           </div>
         </div>
         <div className="btn-div">
           <div className="edit-button btn-child">
-            <EditIcon onClick={handleEditSubmission} />
+            <EditIcon
+              className="expanded-icon"
+              onClick={handleEditSubmission}
+            />
             <p>Edit</p>
           </div>
-          <div className="editButton btn-child">
-            <DeleteIcon onClick={handleDeleteSubmission} />
+          <div className="delete-button btn-child">
+            <DeleteIcon
+              className="expanded-icon"
+              onClick={handleDeleteSubmission}
+            />
             <p>Delete</p>
           </div>
         </div>

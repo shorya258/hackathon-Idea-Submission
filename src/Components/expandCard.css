@@ -1,29 +1,72 @@
-.expanded-card-wrapper{
-    height: 40%;
-    display: flex;
-    flex-direction: row;
-    background: right bottom url('../assets/waves.png') rgb(0,49,69);
-    background-repeat: no-repeat;
-    color: white !important; 
-    padding: 20px 70px;
+.expanded-card-wrapper {
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: right bottom url("../assets/waves.png") rgb(0, 49, 69);
+  background-repeat: no-repeat;
+  color: white !important;
+  padding: 20px 70px;
 }
-.card-img{
-    width: 50px;
+.expanded-content-wrapper {
+  padding: 3rem;
 }
-.card-deatils-content{
-    height:60%;
+.heading-wrapper {
+  display: flex;
+  margin-bottom: 1.5rem;
 }
-.btn-div{
-    display: flex;
-    flex-direction: column;
+.summary-text {
+  margin-top: 0rem;
+  margin-bottom: 1rem;
 }
-.btn-child{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    border: 1px white solid;
-    border-radius: 1rem;
-    margin: 0.6rem;
-    padding: 0.3rem 1rem ;
+.expanded-card-img {
+  object-fit: cover;
+  margin-right: 2rem;
+}
+.expanded-heading {
+  font-weight: 600;
+}
+.content-footer-wrapper {
+  display: flex;
+  align-items: center;
+}
+.favourite-icon {
+  padding-right: 2rem;
+  border-right: 2px solid white;
+}
+.calender-icon {
+  margin-right: 0.5rem;
+}
+.uploaded-date-text {
+  margin-left: 2rem;
+  background-color: black;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+}
+.card-deatils-content {
+  height: 60%;
+}
+.btn-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 2rem;
+}
+.btn-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: 1px white solid;
+  border-radius: 0.5rem;
+  margin: 0.6rem;
+  padding: 0.5rem 1rem;
+}
+.btn-child > p {
+  margin: 0rem;
+}
+.expanded-icon {
+  margin-right: 0.5rem;
 }
