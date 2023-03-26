@@ -3,8 +3,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarIcon from "@mui/icons-material/Star";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./expandCard.css";
-import { Description } from "@mui/icons-material";
+import { Description, Edit } from "@mui/icons-material";
 const ExpandCard = () => {
   const location = useLocation();
   let history = useHistory();
@@ -93,8 +95,20 @@ const ExpandCard = () => {
             <p> {getUploadedDaysByDate(date)}</p>
           </div>
         </div>
-        <button onClick={handleEditSubmission}>Edit</button>
-        <button onClick={handleDeleteSubmission}>Delete</button>
+        <div className="btn-div">
+          <div className="edit-button btn-child">
+            <EditIcon onClick={handleEditSubmission} />
+            <p>Edit</p>
+          </div>
+          <div className="editButton btn-child">
+            <DeleteIcon onClick={handleDeleteSubmission} />
+            <p>Delete</p>
+          </div>
+        </div>
+
+        {/* <button>Edit</button> */}
+
+        {/* <button onClick>Delete</button> */}
       </div>
       <div className="card-details-content">
         <div className="description">{description}</div>

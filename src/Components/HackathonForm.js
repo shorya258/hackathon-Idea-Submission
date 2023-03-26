@@ -129,7 +129,7 @@ export default function HackathonForm(props) {
 
         <Box className="form-input summary">
           <legend className="form-heading">Summary</legend>
-          <input
+          <TextField
             placeholder="A short summary of your submission. This will be visible with your submission"
             value={summary}
             required={true}
@@ -141,7 +141,7 @@ export default function HackathonForm(props) {
 
         <Box className="form-input description">
           <legend className="form-heading">Description</legend>
-          <input
+          <TextField
             placeholder="Write a long description of your project. You can describe your idea and approach here."
             value={description}
             required={true}
@@ -168,7 +168,7 @@ export default function HackathonForm(props) {
 
         <Box className="form-input hackthonName">
           <legend className="form-heading">Hackathon Name</legend>
-          <input
+          <TextField
             required={true}
             placeholder="Enter the name of the hackathon."
             value={hackathonName}

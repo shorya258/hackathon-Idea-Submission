@@ -18,8 +18,8 @@
     font-weight: 500;
     margin-bottom: 30px;
 }
-.hackathon-form h2 .form-input{
-    width: 70vw !important;
+.hackathon-form .form-input{
+    margin-bottom:1rem;
 }
 .hackathon-form .form-heading, .hackathon-form input{
     font-size: 1.2rem !important;

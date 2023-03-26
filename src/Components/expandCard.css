@@ -13,3 +13,17 @@
 .card-deatils-content{
     height:60%;
 }
+.btn-div{
+    display: flex;
+    flex-direction: column;
+}
+.btn-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px white solid;
+    border-radius: 1rem;
+    margin: 0.6rem;
+    padding: 0.3rem 1rem ;
+}
