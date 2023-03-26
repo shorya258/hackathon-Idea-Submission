@@ -18,6 +18,8 @@ const TeamSubCard = (props) => {
     date,
     isFavourite,
     hackathonName,
+    startDate,
+    endDate,
     presentSubmissions,
   } = props;
   let history = useHistory();
@@ -31,6 +33,8 @@ const TeamSubCard = (props) => {
         summary: summary,
         description: description,
         date: date,
+        startDate: startDate,
+        endDate: endDate,
         coverImg: coverImg,
         isFavourite: isFavourite,
         hackathonName: hackathonName,
