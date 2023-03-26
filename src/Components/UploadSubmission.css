@@ -1,0 +1,29 @@
+.UploadSubmission{
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    background: right bottom url('../assets/waves.png') rgb(0,49,69);
+    /* background-color: ; */
+    background-repeat: no-repeat;
+    color: white !important; 
+    padding: 20px 70px;
+}
+.content-wrapper{
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-right: 10%;
+}
+.UploadSubmission .content-wrapper button{
+    color: white !important;
+    background-color: green;
+    width: 194px;
+}
+.UploadSubmission .image-wrapper img{
+    height: 300px;
+    right: 30;
+    left: 30;
+    margin-right: 20px;
+}

@@ -1,0 +1,25 @@
+.card-wrapper{
+    margin: 20px;
+    box-shadow: 20px;
+    cursor: pointer !important;
+    /* margin-bottom: 30px; */
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+   
+    /* direction: ; */
+}
+.card-summary{
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+.card-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.card-date{
+    text-align: right;
+}
