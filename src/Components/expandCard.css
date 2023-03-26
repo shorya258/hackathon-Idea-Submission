@@ -6,10 +6,10 @@
   background: right bottom url("../assets/waves.png") rgb(0, 49, 69);
   background-repeat: no-repeat;
   color: white !important;
-  padding: 20px 70px;
+  padding: 20px 3rem;
 }
 .expanded-content-wrapper {
-  padding: 3rem;
+  padding: 3rem 0;
 }
 .heading-wrapper {
   display: flex;
@@ -87,6 +87,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.hackathonDetails > h2 {
+  font-weight: normal;
+  color: grey;
+}
+.duration-dates {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.duration-dates p {
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
 }
 .links {
   width: 100%;

@@ -148,7 +148,12 @@ const ExpandCard = () => {
             <h2>Hackathon</h2>
             <p>{hackathonName}</p>
           </div>
-          <div className="duration-dates"></div>
+          <div className="duration-dates">
+            <CalendarToday sx={{ width: "15px" }} />
+            <p>
+              {startDate} - {endDate}
+            </p>
+          </div>
           <div className="links">
             <div className="github-link">
               <DeleteIcon
