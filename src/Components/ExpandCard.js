@@ -28,6 +28,9 @@ const ExpandCard = () => {
   const date = location.state.date;
   const startDate = location.state.startDate;
   const endDate = location.state.endDate;
+  const gitLink = location.state.gitLink;
+  const otherLink = location.state.otherLink;
+
 
   const isFavourite = location.state.isFavourite;
   const [currentFavouriteState, toggleCurrentFavouriteState] =

@@ -32,6 +32,8 @@ export default function Submissions() {
       date: new Date(new Date().getTime() - 6 * 24 * 60 * 60 * 1000),
       coverImg: interviewMe,
       hackathonName: "hackathon-1",
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "06-07-2023",
       endDate: "09-07-2023",
     },
@@ -46,6 +48,8 @@ export default function Submissions() {
       date: new Date(new Date().getTime() - 12 * 24 * 60 * 60 * 1000),
       coverImg: loremIpsum,
       hackathonName: "hackathon-2",
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "01-12-2023",
       endDate: "03-12-2023",
     },
@@ -59,6 +63,8 @@ export default function Submissions() {
       date: new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000),
       coverImg: pizzaIpsum,
       hackathonName: "pizzaIpsum",
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "19-12-2024",
       endDate: "23-12-2024",
     },
@@ -73,6 +79,8 @@ export default function Submissions() {
       date: new Date(new Date().getTime() - 8 * 24 * 60 * 60 * 1000),
       coverImg: potterImg,
       hackathonName: "potter ipsum",
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "29-05-2023",
       endDate: "01-06-2023",
     },
@@ -86,6 +94,8 @@ export default function Submissions() {
       date: new Date(new Date().getTime() - 28 * 24 * 60 * 60 * 1000),
       coverImg: figmaIpsum,
       hackathonName:"figmaIpsum",
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "29-05-2023",
       endDate: "01-06-2023",
     },
@@ -98,6 +108,8 @@ export default function Submissions() {
       isFavourite: false,
       hackathonName:"OFFICE IPSUM",
       date: new Date(new Date().getTime() - 13 * 24 * 60 * 60 * 1000),
+      gitLink:"example.url.com",
+      otherLink:"example.url.com",
       startDate: "29-05-2023",
       endDate: "01-06-2023",
     },
@@ -232,6 +244,8 @@ export default function Submissions() {
               endDate={singleIdea.endDate}
               isFavourite={singleIdea.isFavourite}
               coverImg={singleIdea.coverImg}
+              gitLink={singleIdea.gitLink}
+              otherLink={singleIdea.otherLink}
               presentSubmissions={filteredSubmissions}
             />
           );

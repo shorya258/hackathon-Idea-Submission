@@ -16,8 +16,10 @@ export default function HackathonForm(props) {
   const [coverImg, setCoverImg] = useState(null);
   const [description, setDescription] = useState("");
   const [hackathonName, setHackathonName] = useState("");
-  const [startDate, setStartDate]= useState("");
-  const [endDate, setEndDate]= useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [gitLink, setGitLink] = useState("");
+  const [otherLink, setOtherLink] = useState("");
 
   // console.log("edit props", );
 
@@ -38,8 +40,10 @@ export default function HackathonForm(props) {
       coverImg,
       description,
       hackathonName,
-      startDate, 
+      startDate,
       endDate,
+      gitLink,
+      otherLink,
       date: new Date(),
     };
     // console.log(localStorage.getItem("storedSubmissions"));
@@ -75,6 +79,8 @@ export default function HackathonForm(props) {
       coverImg,
       startDate,
       endDate,
+      gitLink,
+      otherLink,
       date,
     };
     let storedSubmissions = JSON.parse(
@@ -115,6 +121,8 @@ export default function HackathonForm(props) {
       setIsFavourite(editSubmissionDetails.isFavourite);
       setCoverImg(editSubmissionDetails.coverImg);
       setHackathonName(editSubmissionDetails.hackathonName);
+      setGitLink(editSubmissionDetails.gitLink);
+      setOtherLink(editSubmissionDetails.otherLink);
     }
   }, []);
 
@@ -243,6 +251,36 @@ export default function HackathonForm(props) {
             />
           </form>
 
+        </Box>
+        <Box className="form-input github-link">
+          <legend className="form-heading">GitHub Repository</legend>
+          <TextField
+            id="outlined-basic"
+            className="input-value"
+            // label="Outlined"
+            variant="outlined"
+            placeholder="Enter your GitHub Repository"
+            value={gitLink}
+            required={true}
+            onChange={(e) => {
+              setGitLink(e.target.value);
+            }}
+          />
+        </Box>
+        <Box className="form-input other-link">
+          <legend className="form-heading">Other Links</legend>
+          <TextField
+            id="outlined-basic"
+            className="input-value"
+            // label="Outlined"
+            variant="outlined"
+            placeholder="You can upload a video demo or URL of you demo app here."
+            value={otherLink}
+            required={true}
+            onChange={(e) => {
+              setOtherLink(e.target.value);
+            }}
+          />
         </Box>
 
         <Button
