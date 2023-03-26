@@ -195,6 +195,38 @@ export default function HackathonForm(props) {
             }}
           />
         </Box>
+        <Box className="form-input start-date">
+          <legend className="form-heading">Hackathon Start date</legend>
+          <form className="form-input-date" noValidate>
+            <TextField
+              id="date"
+              label="Start Date"
+              type="date"
+              defaultValue="Start Date"
+              className="form-input-date-child"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+
+        </Box>
+        <Box className="form-input end-date">
+          <legend className="form-heading">Hackathon End date</legend>
+          <form className="form-input-date" noValidate>
+            <TextField
+              id="date"
+              label="End Date"
+              type="date"
+              defaultValue="End Date"
+              className="form-input-date-child"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+
+        </Box>
 
         <Button
           variant="raised"
