@@ -201,8 +201,9 @@ export default function HackathonForm(props) {
           onClick={(e) => {
             handleSubmitHackathon(e);
           }}
+          className="submit-button"
         >
-          Submit
+          Upload Submission
         </Button>
       </Box>
     </div>
