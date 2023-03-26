@@ -17,8 +17,6 @@ import figmaIpsum from "../assets/figmaIpsum.png";
 export default function Submissions() {
   const [searchTerm, setSearchTerm] = useState("");
   const [allSubmissions, setAllSubmissions] = useState([]);
-  const [startDate, setStartDate] = useState("");;
-  const [endDate, setEndDate] = useState("");;
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showFavourite, toggleShowFavourite] = useState(false);
   const [currentSorting, setCurrentSorting] = useState("newest");

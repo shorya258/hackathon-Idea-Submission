@@ -26,6 +26,9 @@ const ExpandCard = () => {
   const description = location.state.description;
   const hackathonName = location.state.hackathonName;
   const date = location.state.date;
+  const startDate = location.state.startDate;
+  const endDate = location.state.endDate;
+
   const isFavourite = location.state.isFavourite;
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
