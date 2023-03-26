@@ -21,7 +21,7 @@ export default function Submissions() {
   const [allSubmissions, setAllSubmissions] = useState([]);
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showFavourite, toggleShowFavourite] = useState(false);
-  const [currentSorting, setCurrentSorting] = useState("");
+  const [currentSorting, setCurrentSorting] = useState("newest");
   const [hardCodedSubmissions, setHardCodedSubmissions] = useState([
     {
       uniqueID: 101,
@@ -191,20 +191,16 @@ export default function Submissions() {
               onChange={(e) => handleSearchBar(e.target.value)}
             />
           </div>
-          <FormControl sx={{ width: "100px" }}>
-            <InputLabel id="demo-simple-select-label">Sort By</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+          <div className="sorting-button-wrapper">
+            <select
               className="sorting-button"
-              label="Sort by"
               onChange={handleSorting}
               value={currentSorting}
             >
-              <MenuItem value="newest">Newest</MenuItem>
-              <MenuItem value="oldest">Oldest</MenuItem>
-            </Select>
-          </FormControl>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
         </div>
       </Toolbar>
 
