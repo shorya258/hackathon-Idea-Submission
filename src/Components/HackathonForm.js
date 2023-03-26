@@ -3,6 +3,7 @@ import "./hackathonForm.css";
 import { useHistory, useLocation } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
+import Upload from "../assets/Upload.png";
 export default function HackathonForm(props) {
   let history = useHistory();
   const location = useLocation();
@@ -90,7 +91,9 @@ export default function HackathonForm(props) {
     });
     reader.readAsDataURL(file);
   };
-
+  const clickImageUpload = () => {
+    document.getElementById("cover-img-upload-input").click();
+  };
   useEffect(() => {
     // console.log(location.state);
     if (location.state !== undefined) {
@@ -152,20 +155,31 @@ export default function HackathonForm(props) {
               setDescription(e.target.value);
             }}
           />
-          <p>0-300 characters</p>
+          <p className="character-length">0-300 characters</p>
         </Box>
 
-        <Box className="form-input coverImg">
+        <Box className="form-input cover-img-wrapper">
           <legend className="form-heading">Cover Image</legend>
-          <p>Minimum Resolution: 360px X 360px</p>
-          <button variant="contained" component="label">
+          <p className="cover-img-info">Minimum Resolution: 360px X 360px</p>
+          <button
+            className="cover-img-upload-button"
+            variant="contained"
+            component="label"
+          >
             <input
+              id="cover-img-upload-input"
+              className="cover-image-input"
               type="file"
               onChange={(event) => {
                 handleImageUpload(event.target.files[0]);
               }}
             />
-            <img src={coverImg} alt="upload button" />
+            <img
+              src={location.state !== undefined ? coverImg : Upload}
+              alt="upload button"
+              className="cover-image"
+              onClick={clickImageUpload}
+            />
           </button>
         </Box>
 

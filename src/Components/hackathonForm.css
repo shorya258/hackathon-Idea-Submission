@@ -26,3 +26,22 @@
 .input-value {
   width: 100%;
 }
+.cover-img-info {
+  color: gray;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+.cover-image-input {
+  display: none;
+}
+.cover-img-upload-button {
+  border: none;
+  width: 100%;
+  background-color: transparent;
+}
+.cover-image {
+  width: 100%;
+}
+.character-length {
+  text-align: right;
+}
