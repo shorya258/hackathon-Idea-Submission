@@ -3,12 +3,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    font-size: 1.6rem !important;
+    height: 200vh;
+    /* font-size: 1.6rem !important; */
 }
 .form-page .hackathon-form{
     background-color: #fff;
     width: 70% !important;
+    height: 100% !important;
     padding: 40px 20px;
     border-radius: 10px;
     margin-top: 40px;
@@ -21,15 +22,16 @@
     width: 70vw !important;
 }
 .hackathon-form .form-heading, .hackathon-form input{
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
 }
 .hackathon-form .form-heading{
     font-weight: 400;
 }
-.hackathon-form input{
+.form-input input{
     border: 1px grey solid;
     border-radius: 5px;
     padding: 1px 2px;
+    width:100%
 }
 .hackathon-form .form-input button{
     width: 100%;
