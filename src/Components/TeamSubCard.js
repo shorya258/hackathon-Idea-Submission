@@ -17,6 +17,7 @@ const TeamSubCard = (props) => {
     description,
     date,
     isFavourite,
+    hackathonName,
     presentSubmissions,
   } = props;
   let history = useHistory();
@@ -32,7 +33,7 @@ const TeamSubCard = (props) => {
         date: date,
         coverImg: coverImg,
         isFavourite: isFavourite,
-        presentSubmissions: presentSubmissions,
+        hackathonName: hackathonName,
       },
     });
   };
@@ -54,7 +55,7 @@ const TeamSubCard = (props) => {
       <Card sx={{ width: "300px" }} className="card-wrapper">
         <CardContent className="card-content">
           <div className="card-header" onClick={handleExpandCard}>
-            <img src={coverImg} />
+            <img src={coverImg} className="coverImg" />
 
             <Typography
               className="card-heading"

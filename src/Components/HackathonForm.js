@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-// import form from "muicss/lib/react/form";
-// import input from "muicss/lib/react/input";
-// import button from "muicss/lib/react/button";
 import "./hackathonForm.css";
-import Upload from "../assets/Upload.png";
-import { Image } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
-export default function HackathonForm() {
+import { useHistory, useLocation } from "react-router-dom";
+export default function HackathonForm(props) {
   let history = useHistory();
-  // const [uniqueId, setUniqueId] = useState("");
+  const location = useLocation();
+  const [uniqueID, setUniqueID] = useState("");
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
+  const [date, setDate] = useState("");
   const [isFavourite, setIsFavourite] = useState(false);
+  const [coverImg, setCoverImg] = useState(null);
+  const [description, setDescription] = useState("");
+  const [hackathonName, setHackathonName] = useState("");
+  // console.log("edit props", );
 
-  // useEffect(() => {
-  //   console.log(title);
-  // }, [title, summary]);
-
-  // const [description, setDescription]= useState("");
   const handleSubmitHackathon = (e) => {
     e.preventDefault();
+
+    if (location.state !== undefined) {
+      handleEditSubmission();
+      return;
+    }
     const uniqueID = JSON.stringify(new Date().getTime());
     console.log(uniqueID, title, summary, isFavourite);
     const newHackathonSubmission = {
@@ -27,6 +28,8 @@ export default function HackathonForm() {
       title,
       summary,
       isFavourite,
+      coverImg,
+      description,
       date: new Date(),
     };
     // console.log(localStorage.getItem("storedSubmissions"));
@@ -49,6 +52,55 @@ export default function HackathonForm() {
     }
     history.push("/");
   };
+  const handleEditSubmission = () => {
+    const editedHackathonSubmission = {
+      uniqueID,
+      title,
+      summary,
+      description,
+      hackathonName,
+      isFavourite,
+      description,
+      coverImg,
+      date,
+    };
+    let storedSubmissions = JSON.parse(
+      localStorage.getItem("storedSubmissions")
+    );
+    for (let i = 0; i < storedSubmissions.length; i++) {
+      if (storedSubmissions[i].uniqueID === uniqueID) {
+        storedSubmissions[i] = editedHackathonSubmission;
+        localStorage.setItem(
+          "storedSubmissions",
+          JSON.stringify(storedSubmissions)
+        );
+      }
+    }
+    history.push("/");
+  };
+  const handleImageUpload = (file) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      console.log(reader.result);
+      setCoverImg(reader.result);
+    });
+    reader.readAsDataURL(file);
+  };
+
+  useEffect(() => {
+    console.log(location.state);
+    if (location.state !== undefined) {
+      let editSubmissionDetails = location.state.submissionDetails;
+      setUniqueID(editSubmissionDetails.uniqueID);
+      setTitle(editSubmissionDetails.title);
+      setSummary(editSubmissionDetails.summary);
+      setDescription(editSubmissionDetails.description);
+      setDate(editSubmissionDetails.date);
+      setIsFavourite(editSubmissionDetails.isFavourite);
+      setCoverImg(editSubmissionDetails.coverImg);
+      setHackathonName(editSubmissionDetails.hackathonName);
+    }
+  }, []);
 
   return (
     <div className="form-page">
@@ -85,8 +137,13 @@ export default function HackathonForm() {
           <legend className="form-heading">Cover Image</legend>
           <p>Minimum Resolution: 360px X 360px</p>
           <button variant="contained" component="label">
-            <input type="file" />
-            <img src={Upload} alt="upload button" />
+            <input
+              type="file"
+              onChange={(event) => {
+                handleImageUpload(event.target.files[0]);
+              }}
+            />
+            <img src={coverImg} alt="upload button" />
           </button>
         </div>
         <div className="form-input">

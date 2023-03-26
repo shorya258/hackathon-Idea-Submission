@@ -4,6 +4,9 @@
     cursor: pointer !important;
     /* margin-bottom: 30px; */
 }
+.coverImg{
+    width: 100px;
+}
 .card-content{
     display: flex;
     flex-direction: column;
