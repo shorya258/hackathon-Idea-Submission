@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./hackathonForm.css";
 import { useHistory, useLocation } from "react-router-dom";
+import { Box } from "@mui/system";
+import { Button, TextField } from "@mui/material";
 export default function HackathonForm(props) {
   let history = useHistory();
   const location = useLocation();
@@ -30,6 +32,7 @@ export default function HackathonForm(props) {
       isFavourite,
       coverImg,
       description,
+      hackathonName,
       date: new Date(),
     };
     // console.log(localStorage.getItem("storedSubmissions"));
@@ -52,6 +55,7 @@ export default function HackathonForm(props) {
     }
     history.push("/");
   };
+  //editing an hackathon submission detail
   const handleEditSubmission = () => {
     const editedHackathonSubmission = {
       uniqueID,
@@ -88,7 +92,7 @@ export default function HackathonForm(props) {
   };
 
   useEffect(() => {
-    console.log(location.state);
+    // console.log(location.state);
     if (location.state !== undefined) {
       let editSubmissionDetails = location.state.submissionDetails;
       setUniqueID(editSubmissionDetails.uniqueID);
@@ -104,65 +108,87 @@ export default function HackathonForm(props) {
 
   return (
     <div className="form-page">
-      <form className="hackathon-form">
-        <h2>New Hackathon Submission</h2>
-        <div className="form-input">
-          <legend className="form-heading">Title</legend>
-          <input
-            placeholder="Title of your submission"
-            value={title}
-            required={true}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-input">
-          <legend className="form-heading">Summary</legend>
-          <input
-            placeholder="A short summary of your submission. This will be visible with your submission"
-            value={summary}
-            required={true}
-            onChange={(e) => {
-              setSummary(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-input">
-          <legend className="form-heading">Description</legend>
-          <input placeholder="Write a long description of your project. You can describe your idea and approach here." />
-          <p>0/300 characters</p>
-        </div>
-        <div className="form-input">
-          <legend className="form-heading">Cover Image</legend>
-          <p>Minimum Resolution: 360px X 360px</p>
-          <button variant="contained" component="label">
-            <input
-              type="file"
-              onChange={(event) => {
-                handleImageUpload(event.target.files[0]);
+      <Box className="hackathon-form">
+        <form>
+          <h2>New Hackathon Submission</h2>
+
+          {/* title */}
+          <Box className="form-input title">
+            <legend className="form-heading">Title</legend>
+            <TextField
+              id="outlined-basic"
+              // label="Outlined"
+              variant="outlined"
+              placeholder="Title of your submission"
+              value={title}
+              required={true}
+              onChange={(e) => {
+                setTitle(e.target.value);
               }}
             />
-            <img src={coverImg} alt="upload button" />
-          </button>
-        </div>
-        <div className="form-input">
-          <legend className="form-heading">Hackathon Name</legend>
-          <input
-            required={true}
-            placeholder="Enter the name of the hackathon."
-          />
-        </div>
+          </Box>
 
-        <button
-          variant="raised"
-          onClick={(e) => {
-            handleSubmitHackathon(e);
-          }}
-        >
-          Submit
-        </button>
-      </form>
+          <Box className="form-input summary">
+            <legend className="form-heading">Summary</legend>
+            <input
+              placeholder="A short summary of your submission. This will be visible with your submission"
+              value={summary}
+              required={true}
+              onChange={(e) => {
+                setSummary(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box className="form-input description">
+            <legend className="form-heading">Description</legend>
+            <input
+              placeholder="Write a long description of your project. You can describe your idea and approach here."
+              value={description}
+              required={true}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
+            <p>0-300 characters</p>
+          </Box>
+
+          <Box className="form-input coverImg">
+            <legend className="form-heading">Cover Image</legend>
+            <p>Minimum Resolution: 360px X 360px</p>
+            <button variant="contained" component="label">
+              <input
+                type="file"
+                onChange={(event) => {
+                  handleImageUpload(event.target.files[0]);
+                }}
+              />
+              <img src={coverImg} alt="upload button" />
+            </button>
+          </Box>
+
+          <Box className="form-input hackthonName">
+            <legend className="form-heading">Hackathon Name</legend>
+            <input
+              required={true}
+              placeholder="Enter the name of the hackathon."
+              value={hackathonName}
+              onChange={(e) => {
+                setHackathonName(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Button
+            variant="raised"
+            onClick={(e) => {
+              handleSubmitHackathon(e);
+            }}
+          >
+            Submit
+          </Button>
+        </form>
+      </Box>
     </div>
   );
 }

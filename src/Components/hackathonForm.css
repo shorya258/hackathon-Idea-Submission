@@ -4,10 +4,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    font-size: 1.6rem !important;
 }
 .form-page .hackathon-form{
     background-color: #fff;
-    width: 70%;
+    width: 70% !important;
     padding: 40px 20px;
     border-radius: 10px;
     margin-top: 40px;
@@ -15,6 +16,9 @@
 .hackathon-form h2{
     font-weight: 500;
     margin-bottom: 30px;
+}
+.hackathon-form h2 .form-input{
+    width: 70vw !important;
 }
 .hackathon-form .form-heading, .hackathon-form input{
     font-size: 0.8rem !important;

@@ -21,7 +21,7 @@ const TeamSubCard = (props) => {
     presentSubmissions,
   } = props;
   let history = useHistory();
-
+  //sending data to expand card
   const handleExpandCard = () => {
     history.push({
       pathname: "/ideaDetails",

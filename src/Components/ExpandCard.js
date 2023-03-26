@@ -7,6 +7,7 @@ import "./expandCard.css";
 import { Description } from "@mui/icons-material";
 const ExpandCard = () => {
   const location = useLocation();
+  let history = useHistory();
   let storedSubmissions = JSON.parse(localStorage.getItem("storedSubmissions"));
   const submissionDetails = location.state;
   const uniqueID = location.state.uniqueID;
@@ -19,7 +20,6 @@ const ExpandCard = () => {
   const isFavourite = location.state.isFavourite;
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
-  let history = useHistory();
   const handleEditSubmission = () => {
     history.push({
       pathname: "/submitHackathonIdea",
@@ -27,6 +27,21 @@ const ExpandCard = () => {
         submissionDetails,
       },
     });
+  };
+  const handleDeleteSubmission = () => {
+    for (let i = 0; i < storedSubmissions.length; i++) {
+      var singleSubmission = storedSubmissions[i];
+      if (singleSubmission.uniqueID === uniqueID) {
+        storedSubmissions.splice(i, i);
+        localStorage.setItem(
+          "storedSubmissions",
+          JSON.stringify(storedSubmissions)
+        );
+
+        console.log("after deleting", storedSubmissions);
+        history.push("./");
+      }
+    }
   };
   const handleFavourite = () => {
     // storedSubmissions =
@@ -79,6 +94,7 @@ const ExpandCard = () => {
           </div>
         </div>
         <button onClick={handleEditSubmission}>Edit</button>
+        <button onClick={handleDeleteSubmission}>Delete</button>
       </div>
       <div className="card-details-content">
         <div className="description">{description}</div>

@@ -17,7 +17,7 @@ import img3 from "../assets/potterImg.png";
 
 export default function Submissions() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [toggleAllSubmissions, setToggleAllSubmissions] = useState(false);
+  // const [toggleAllSubmissions, setToggleAllSubmissions] = useState(false);
   const [allSubmissions, setAllSubmissions] = useState([]);
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showFavourite, toggleShowFavourite] = useState(false);
@@ -204,23 +204,22 @@ export default function Submissions() {
       </Toolbar>
 
       <div className="cards-display">
-        {!toggleAllSubmissions &&
-          filteredSubmissions.map((singleIdea) => {
-            return (
-              <TeamSubCard
-                key={singleIdea.uniqueID}
-                uniqueID={singleIdea.uniqueID}
-                title={singleIdea.title}
-                summary={singleIdea.summary}
-                description={singleIdea.description}
-                hackathonName={singleIdea.hackathonName}
-                date={singleIdea.date}
-                isFavourite={singleIdea.isFavourite}
-                coverImg={singleIdea.coverImg}
-                presentSubmissions={filteredSubmissions}
-              />
-            );
-          })}
+        {filteredSubmissions.map((singleIdea) => {
+          return (
+            <TeamSubCard
+              key={singleIdea.uniqueID}
+              uniqueID={singleIdea.uniqueID}
+              title={singleIdea.title}
+              summary={singleIdea.summary}
+              description={singleIdea.description}
+              hackathonName={singleIdea.hackathonName}
+              date={singleIdea.date}
+              isFavourite={singleIdea.isFavourite}
+              coverImg={singleIdea.coverImg}
+              presentSubmissions={filteredSubmissions}
+            />
+          );
+        })}
         {/* {!toggleAllSubmissions && (
           <TeamSubCard
             title="Interview Me"
