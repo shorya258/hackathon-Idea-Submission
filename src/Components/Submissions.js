@@ -1,24 +1,24 @@
 import {
   Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   Toolbar,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import "./submissions.css";
 import SearchIcon from "@mui/icons-material/Search";
 import TeamSubCard from "./TeamSubCard";
-// import { div } from "/react";
-import img1 from "../assets/Image.png";
-import img2 from "../assets/img3.png";
-import img3 from "../assets/potterImg.png";
+import office from "../assets/officeIpsum.png";
+import pizzaIpsum from "../assets/pizzaIpsum.png";
+import potterImg from "../assets/potterImg.png";
+import loremIpsum from "../assets/loremIpsum.png";
+import interviewMe from "../assets/interviewMe.png";
+import figmaIpsum from "../assets/figmaIpsum.png";
+
 
 export default function Submissions() {
   const [searchTerm, setSearchTerm] = useState("");
-  // const [toggleAllSubmissions, setToggleAllSubmissions] = useState(false);
   const [allSubmissions, setAllSubmissions] = useState([]);
+  const [startDate, setStartDate] = useState("");;
+  const [endDate, setEndDate] = useState("");;
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showFavourite, toggleShowFavourite] = useState(false);
   const [currentSorting, setCurrentSorting] = useState("newest");
@@ -32,8 +32,10 @@ export default function Submissions() {
         "Lorem ipsum cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium  sit amet consectetur adipisicing elit. Mollitia et nihil consectetur, ab ratione molestias voluptatibus non soluta provident aliquam possimus facere explicabo ",
       isFavourite: false,
       date: new Date(new Date().getTime() - 6 * 24 * 60 * 60 * 1000),
-      coverImg: img1,
+      coverImg: interviewMe,
       hackathonName: "hackathon-1",
+      startDate: "06-07-2023",
+      endDate: "09-07-2023",
     },
     {
       uniqueID: 102,
@@ -44,17 +46,23 @@ export default function Submissions() {
         "Lorem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventoripsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventor",
       isFavourite: false,
       date: new Date(new Date().getTime() - 12 * 24 * 60 * 60 * 1000),
-      coverImg: img2,
+      coverImg: loremIpsum,
       hackathonName: "hackathon-2",
+      startDate: "01-12-2023",
+      endDate: "03-12-2023",
     },
     {
       uniqueID: 103,
       title: "Pizza Ipsum",
       summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
-      isFavourite: false,
       description:
-        "Lorem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventornam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consecteturem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur",
+      "Lorem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventornam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consecteturem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur",
+      isFavourite: false,
       date: new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000),
+      coverImg: pizzaIpsum,
+      hackathonName: "pizzaIpsum",
+      startDate: "19-12-2024",
+      endDate: "23-12-2024",
     },
     {
       uniqueID: 104,
@@ -65,25 +73,36 @@ export default function Submissions() {
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam temporibus quam nobis consequuntur quos accusamus exercitationem veniam laboriosam tempora voluptatum, consequatur in assumenda ut commodi excepturi, mollitia dolores opmaxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sedsed mollitia! Nobis sitmaxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sittio dignissimos! Quas, quibusdam! Mollitia magni porro fugit dignissimos temporibus excepturi illo eaque dicta, soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.",
       isFavourite: false,
       date: new Date(new Date().getTime() - 8 * 24 * 60 * 60 * 1000),
-      coverImg: img3,
+      coverImg: potterImg,
+      hackathonName: "potter ipsum",
+      startDate: "29-05-2023",
+      endDate: "01-06-2023",
     },
-    // {
-    //   uniqueID: 105,
-    //   title: "Figma Ipsum",
-    //   summary:
-    //     "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
-    //   isFavourite: false,
-    //   date: "Uploaded 16 days ago",
-    //   dateID: "16",
-    // },
-    // {
-    //   uniqueID: 106,
-    //   title: "Office Ipsum",
-    //   summary: "Office ipsum you must be muted.",
-    //   isFavourite: false,
-    //   date: "Uploaded 28 days ago",
-    //   dateID: "28",
-    // },
+    {
+      uniqueID: 105,
+      title: "Figma Ipsum",
+      summary:
+        "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
+      description: "soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.",
+      isFavourite: false,
+      date: new Date(new Date().getTime() - 28 * 24 * 60 * 60 * 1000),
+      coverImg: figmaIpsum,
+      hackathonName:"figmaIpsum",
+      startDate: "29-05-2023",
+      endDate: "01-06-2023",
+    },
+    {
+      uniqueID: 106,
+      title: "Office Ipsum",
+      summary: "Office ipsum you must be muted.",
+      coverImg: office,
+       description: "soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.soluta possimus quam delectus amet perferendis tempora ex neque consequuntur veritatis modi suscipit nemo? Quos, voluptas atque eum soluta quia repellat assumenda cum maxime cupiditate voluptatibus magni deleniti, distinctio dignissimos vitae illo reprehenderit sequi repellendus iusto odit labore molestias hic. Ratione sint in ullam incidunt esse ipsam velit vitae nemo commodi, molestias dicta! Totam maiores quas architecto deleniti dicta optio ut at tempore est reiciendis. Dolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed mollitia! Nobis sit provident a laudantium reprehenderit non id quisquam odio explicabo consectetur sunt, doloremque eveniet nisi dolores rem esse recusandae corporis vel excepturi voluptas, itaque ab! Id doloribus deleniti maxime voluptate esse iure dolor aspernatur quibusdam impedit soluta optio corporis natus repellat cum quidem molestias possimus sapiente, nostrum delectus.",
+      isFavourite: false,
+      hackathonName:"OFFICE IPSUM",
+      date: new Date(new Date().getTime() - 13 * 24 * 60 * 60 * 1000),
+      startDate: "29-05-2023",
+      endDate: "01-06-2023",
+    },
   ]);
   const handleShowFavourite = (currentValue) => {
     if (currentValue === "all") {
@@ -116,8 +135,6 @@ export default function Submissions() {
       return singleSubmission.title.includes(searchTerm);
     });
     setFilteredSubmissions(currentSub);
-    // console.log(searchTerm);
-    // console.log(currentSub);
   };
 
   const handleSorting = (e) => {
@@ -152,8 +169,6 @@ export default function Submissions() {
       );
       storedSubmissions = hardCodedSubmissions;
     }
-
-    // console.log("use eff storedSubmissions", storedSubmissions);
     setAllSubmissions(storedSubmissions);
     setFilteredSubmissions(storedSubmissions);
   }, []);
@@ -215,42 +230,15 @@ export default function Submissions() {
               description={singleIdea.description}
               hackathonName={singleIdea.hackathonName}
               date={singleIdea.date}
+              startDate={singleIdea.startDate}
+              endDate={singleIdea.endDate}
               isFavourite={singleIdea.isFavourite}
               coverImg={singleIdea.coverImg}
               presentSubmissions={filteredSubmissions}
             />
           );
         })}
-        {/* {!toggleAllSubmissions && (
-          <TeamSubCard
-            title="Interview Me"
-            summary="Built with GPT-3, React, and Flask. Practice interviews with AI and ace your next interview."
-            date="Uploaded 6 days ago"
-          />
-        )}
-        {!toggleAllSubmissions && (
-          <TeamSubCard
-            title="Pirate Ipsum"
-            summary="Shiver to tender hempen brig quarterdeck jolly pay. Furl sail crimp furl pinnace."
-            date="Uploaded 6 days ago"
-          />
-        )}
-        {!toggleAllSubmissions && (
-          <TeamSubCard
-            title="Lorem Ipsum"
-            summary="Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec."
-            date="Uploaded 6 days ago"
-          />
-        )}
-        {!toggleAllSubmissions && (
-          <TeamSubCard
-            title="Potter Ipsum"
-            summary="Potter ipsum wand elf parchment wingardium. Ghost glass hall tears hair must train. Snape alohamora bathrooms."
-            date="Uploaded 6 days ago"
-          />
-        )} */}
-
-        {/* {toggleAllSubmissions && <TeamSubCard title={searchTerm} />} */}
+       
       </div>
     </div>
   );

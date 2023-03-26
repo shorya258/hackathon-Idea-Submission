@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import Upload from "../assets/Upload.png";
+import { typeOf } from "react-is";
 export default function HackathonForm(props) {
   let history = useHistory();
   const location = useLocation();
@@ -15,6 +16,9 @@ export default function HackathonForm(props) {
   const [coverImg, setCoverImg] = useState(null);
   const [description, setDescription] = useState("");
   const [hackathonName, setHackathonName] = useState("");
+  const [startDate, setStartDate]= useState("");
+  const [endDate, setEndDate]= useState("");
+
   // console.log("edit props", );
 
   const handleSubmitHackathon = (e) => {
@@ -34,6 +38,8 @@ export default function HackathonForm(props) {
       coverImg,
       description,
       hackathonName,
+      startDate, 
+      endDate,
       date: new Date(),
     };
     // console.log(localStorage.getItem("storedSubmissions"));
@@ -67,6 +73,8 @@ export default function HackathonForm(props) {
       isFavourite,
       description,
       coverImg,
+      startDate,
+      endDate,
       date,
     };
     let storedSubmissions = JSON.parse(
@@ -86,7 +94,7 @@ export default function HackathonForm(props) {
   const handleImageUpload = (file) => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
-      console.log(reader.result);
+      // console.log("file",file);
       setCoverImg(reader.result);
     });
     reader.readAsDataURL(file);
@@ -95,7 +103,6 @@ export default function HackathonForm(props) {
     document.getElementById("cover-img-upload-input").click();
   };
   useEffect(() => {
-    // console.log(location.state);
     if (location.state !== undefined) {
       let editSubmissionDetails = location.state.submissionDetails;
       setUniqueID(editSubmissionDetails.uniqueID);
@@ -103,6 +110,8 @@ export default function HackathonForm(props) {
       setSummary(editSubmissionDetails.summary);
       setDescription(editSubmissionDetails.description);
       setDate(editSubmissionDetails.date);
+      setStartDate(editSubmissionDetails.startDate);
+      setEndDate(editSubmissionDetails.endDate);
       setIsFavourite(editSubmissionDetails.isFavourite);
       setCoverImg(editSubmissionDetails.coverImg);
       setHackathonName(editSubmissionDetails.hackathonName);
@@ -175,7 +184,7 @@ export default function HackathonForm(props) {
               }}
             />
             <img
-              src={location.state !== undefined ? coverImg : Upload}
+              src={coverImg !== undefined ? coverImg : Upload}
               alt="upload button"
               className="cover-image"
               onClick={clickImageUpload}
@@ -207,6 +216,10 @@ export default function HackathonForm(props) {
               InputLabelProps={{
                 shrink: true,
               }}
+              onClick={(e) => {
+                setStartDate(e.target.value);
+                // console.log(typeof e.target.value);
+              }}
             />
           </form>
 
@@ -222,6 +235,10 @@ export default function HackathonForm(props) {
               className="form-input-date-child"
               InputLabelProps={{
                 shrink: true,
+              }}
+              onClick={(e) => {
+                setEndDate(e.target.value);
+                // console.log(typeof e.target.value);
               }}
             />
           </form>
