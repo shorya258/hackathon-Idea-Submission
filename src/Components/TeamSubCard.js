@@ -1,8 +1,6 @@
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardMedia,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -20,6 +18,8 @@ const TeamSubCard = (props) => {
     hackathonName,
     startDate,
     endDate,
+    gitLink,
+    otherLink,
     presentSubmissions,
   } = props;
   let history = useHistory();
@@ -38,6 +38,8 @@ const TeamSubCard = (props) => {
         coverImg: coverImg,
         isFavourite: isFavourite,
         hackathonName: hackathonName,
+        gitLink: gitLink,
+        otherLink: otherLink,
       },
     });
   };
