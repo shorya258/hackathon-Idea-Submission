@@ -59,14 +59,12 @@ const ExpandCard = () => {
           JSON.stringify(storedSubmissions)
         );
 
-        console.log("after deleting", storedSubmissions);
+        // console.log("after deleting", storedSubmissions);
         history.push("./");
       }
     }
   };
   const handleFavourite = () => {
-    // storedSubmissions =
-    //   storedSubmissions == null ? presentSubmissions : storedSubmissions;
 
     for (let i = 0; i < storedSubmissions.length; i++) {
       var singleSubmission = storedSubmissions[i];
@@ -88,7 +86,6 @@ const ExpandCard = () => {
     const uploadedDays = Math.floor(
       (currentDate - uploadedDate) / (1000 * 60 * 60 * 24)
     );
-    // console.log("uploadedDate", uploadedDate, "currentDate", currentDate,);
     if (uploadedDays === 0) {
       return "Uploaded just now";
     } else {
