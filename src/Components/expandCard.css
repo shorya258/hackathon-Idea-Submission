@@ -67,7 +67,10 @@
 .expanded-icon {
   margin-right: 0.5rem;
 }
-
+.modal-options{
+  display: flex;
+  justify-content: space-evenly;
+}
 .card-details-content {
   height: 60%;
   display: flex;

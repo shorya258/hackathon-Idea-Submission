@@ -5,6 +5,8 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import LaunchIcon from '@mui/icons-material/Launch';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import "./expandCard.css";
 import {
   CalendarMonth,
@@ -14,6 +16,7 @@ import {
   Description,
   Edit,
 } from "@mui/icons-material";
+import { Box, Button, Modal, Typography } from "@mui/material";
 const ExpandCard = () => {
   const location = useLocation();
   let history = useHistory();
@@ -35,6 +38,9 @@ const ExpandCard = () => {
   const isFavourite = location.state.isFavourite;
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const handleEditSubmission = () => {
     history.push({
       pathname: "/submitHackathonIdea",
@@ -121,18 +127,50 @@ const ExpandCard = () => {
           </div>
         </div>
         <div className="btn-div">
-          <div className="edit-button btn-child">
+          {/* EDIT BUTTON */}
+          <div className="edit-button btn-child" onClick={handleEditSubmission}>
             <EditIcon
               className="expanded-icon"
-              onClick={handleEditSubmission}
             />
             <p>Edit</p>
           </div>
-          <div className="delete-button btn-child">
+
+          {/* DELETE BUTTON */}
+          <div className="delete-button btn-child" onClick={handleOpen}>
             <DeleteIcon
               className="expanded-icon"
-              onClick={handleDeleteSubmission}
             />
+            <Modal open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description">
+              <Box sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 400,
+                bgcolor: 'background.paper',
+                border: '2px solid #000',
+                boxShadow: 24,
+                p: 4,
+              }}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Delete Model
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  <p>This action is irreversible. Are you sure you want to delete this model?</p>
+                  <div className= "modal-options">
+                  <Button variant="outlined" color="success" onClick={() => {
+                    history.push({
+                      pathname: "/",
+                    });
+                  }}>Cancel</Button>
+                  <Button variant="contained" onClick={handleDeleteSubmission} color="error">Delete</Button>
+                  </div>
+                </Typography>
+              </Box>
+            </Modal>
             <p>Delete</p>
           </div>
         </div>
@@ -158,17 +196,16 @@ const ExpandCard = () => {
             </p>
           </div>
           <div className="links">
-            <div className="github-link">
-              <DeleteIcon
+            <div className="github-link" 
+                onClick={()=>{window.open(gitLink, '_blank')}}>
+              <GitHubIcon
                 className="expanded-icon"
-                onClick={handleDeleteSubmission}
               />
               <p>GitHub Repository</p>
             </div>
-            <div className="other-links">
-              <DeleteIcon
+            <div className="other-links" onClick={()=>{window.open(otherLink, '_blank')}}>
+              <LaunchIcon
                 className="expanded-icon"
-                onClick={handleDeleteSubmission}
               />
               <p>Other link</p>
             </div>
