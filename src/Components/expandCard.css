@@ -45,9 +45,6 @@
   display: flex;
   align-items: center;
 }
-.card-deatils-content {
-  height: 60%;
-}
 .btn-div {
   display: flex;
   flex-direction: column;
@@ -69,4 +66,47 @@
 }
 .expanded-icon {
   margin-right: 0.5rem;
+}
+
+.card-details-content {
+  height: 60%;
+  display: flex;
+  padding: 2rem 6rem;
+  justify-content: space-between;
+}
+.card-details-left {
+  width: 70%;
+}
+.desc-heading {
+  font-weight: normal;
+}
+.desc-summary {
+  font-size: 0.7rem;
+}
+.card-details-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.github-link,
+.other-links {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0rem 1rem;
+  margin-bottom: 1rem;
+}
+.github-link > p,
+.other-links > p {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
 }

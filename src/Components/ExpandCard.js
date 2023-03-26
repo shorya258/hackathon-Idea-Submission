@@ -136,8 +136,33 @@ const ExpandCard = () => {
         {/* <button onClick>Delete</button> */}
       </div>
       <div className="card-details-content">
-        <div className="description">{description}</div>
-        <div className="hackathonName">{hackathonName}</div>
+        <div className="card-details-left">
+          <h2 className="desc-heading">Description</h2>
+          <p className="desc-summary">{description}</p>
+        </div>
+        <div className="card-details-right">
+          <div className="hackathonDetails">
+            <h2>Hackathon</h2>
+            <p>{hackathonName}</p>
+          </div>
+          <div className="duration-dates"></div>
+          <div className="links">
+            <div className="github-link">
+              <DeleteIcon
+                className="expanded-icon"
+                onClick={handleDeleteSubmission}
+              />
+              <p>GitHub Repository</p>
+            </div>
+            <div className="other-links">
+              <DeleteIcon
+                className="expanded-icon"
+                onClick={handleDeleteSubmission}
+              />
+              <p>Other link</p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
