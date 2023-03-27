@@ -14,6 +14,7 @@ const UploadSubmission = () => {
           in parturient purus feugiat faucibus. Congue laoreet duis porta turpis
           eget suspendisse ac pharetra amet. Vel nisl tempus nec vitae.
         </p>
+        {/* redirect to hackathon form when button is clicked */}
         <Button onClick={() => history.push("/submitHackathonIdea")}>
           Upload Submission
         </Button>

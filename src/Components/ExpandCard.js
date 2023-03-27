@@ -5,22 +5,16 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import LaunchIcon from '@mui/icons-material/Launch';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import LaunchIcon from "@mui/icons-material/Launch";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import "./expandCard.css";
-import {
-  CalendarMonth,
-  CalendarMonthOutlined,
-  CalendarToday,
-  CalendarViewMonth,
-  Description,
-  Edit,
-} from "@mui/icons-material";
+import { CalendarToday } from "@mui/icons-material";
 import { Box, Button, Modal, Typography } from "@mui/material";
 const ExpandCard = () => {
   const location = useLocation();
   let history = useHistory();
   let storedSubmissions = JSON.parse(localStorage.getItem("storedSubmissions"));
+  // get all the values sent from TeamSubCard.js
   const submissionDetails = location.state;
   const uniqueID = location.state.uniqueID;
   const title = location.state.title;
@@ -33,14 +27,17 @@ const ExpandCard = () => {
   const endDate = location.state.endDate;
   const gitLink = location.state.gitLink;
   const otherLink = location.state.otherLink;
-
-
   const isFavourite = location.state.isFavourite;
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
   const [open, setOpen] = useState(false);
+
+  // handle modal open when clicked on delete option
   const handleOpen = () => setOpen(true);
+  // handle modal close
   const handleClose = () => setOpen(false);
+
+  // when clicked on edit submission, redirect to HackathonForm.js
   const handleEditSubmission = () => {
     history.push({
       pathname: "/submitHackathonIdea",
@@ -49,6 +46,7 @@ const ExpandCard = () => {
       },
     });
   };
+  // Handle delete submission
   const handleDeleteSubmission = () => {
     for (let i = 0; i < storedSubmissions.length; i++) {
       var singleSubmission = storedSubmissions[i];
@@ -58,18 +56,17 @@ const ExpandCard = () => {
           "storedSubmissions",
           JSON.stringify(storedSubmissions)
         );
-
-        // console.log("after deleting", storedSubmissions);
+        // redirect to home page after deleting
         history.push("./");
       }
     }
   };
-  const handleFavourite = () => {
 
+  // make a submission favourite or make a favourite submission not favourite
+  const handleFavourite = () => {
     for (let i = 0; i < storedSubmissions.length; i++) {
       var singleSubmission = storedSubmissions[i];
       if (singleSubmission.uniqueID === uniqueID) {
-        // console.log(singleSubmission);
         singleSubmission.isFavourite = !singleSubmission.isFavourite;
         toggleCurrentFavouriteState(singleSubmission.isFavourite);
         localStorage.setItem(
@@ -78,7 +75,6 @@ const ExpandCard = () => {
         );
       }
     }
-    console.log("storedSubmissions", storedSubmissions);
   };
   const getUploadedDaysByDate = (date) => {
     const uploadedDate = new Date(date);
@@ -126,44 +122,59 @@ const ExpandCard = () => {
         <div className="btn-div">
           {/* EDIT BUTTON */}
           <div className="edit-button btn-child" onClick={handleEditSubmission}>
-            <EditIcon
-              className="expanded-icon"
-            />
+            <EditIcon className="expanded-icon" />
             <p>Edit</p>
           </div>
 
           {/* DELETE BUTTON */}
           <div className="delete-button btn-child" onClick={handleOpen}>
-            <DeleteIcon
-              className="expanded-icon"
-            />
-            <Modal open={open}
+            <DeleteIcon className="expanded-icon" />
+            <Modal
+              open={open}
               onClose={handleClose}
               aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description">
-              <Box sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 400,
-                bgcolor: 'background.paper',
-                border: '2px solid #000',
-                boxShadow: 24,
-                p: 4,
-              }}>
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 400,
+                  bgcolor: "background.paper",
+                  border: "2px solid #000",
+                  boxShadow: 24,
+                  p: 4,
+                }}
+              >
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Delete Model
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  <p>This action is irreversible. Are you sure you want to delete this model?</p>
-                  <div className= "modal-options">
-                  <Button variant="outlined" color="success" onClick={() => {
-                    history.push({
-                      pathname: "/",
-                    });
-                  }}>Cancel</Button>
-                  <Button variant="contained" onClick={handleDeleteSubmission} color="error">Delete</Button>
+                  <p>
+                    This action is irreversible. Are you sure you want to delete
+                    this model?
+                  </p>
+                  <div className="modal-options">
+                    <Button
+                      variant="outlined"
+                      color="success"
+                      onClick={() => {
+                        history.push({
+                          pathname: "/",
+                        });
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={handleDeleteSubmission}
+                      color="error"
+                    >
+                      Delete
+                    </Button>
                   </div>
                 </Typography>
               </Box>
@@ -193,17 +204,22 @@ const ExpandCard = () => {
             </p>
           </div>
           <div className="links">
-            <div className="github-link" 
-                onClick={()=>{window.open(gitLink, '_blank')}}>
-              <GitHubIcon
-                className="expanded-icon"
-              />
+            <div
+              className="github-link"
+              onClick={() => {
+                window.open(gitLink, "_blank");
+              }}
+            >
+              <GitHubIcon className="expanded-icon" />
               <p>GitHub Repository</p>
             </div>
-            <div className="other-links" onClick={()=>{window.open(otherLink, '_blank')}}>
-              <LaunchIcon
-                className="expanded-icon"
-              />
+            <div
+              className="other-links"
+              onClick={() => {
+                window.open(otherLink, "_blank");
+              }}
+            >
+              <LaunchIcon className="expanded-icon" />
               <p>Other link</p>
             </div>
           </div>

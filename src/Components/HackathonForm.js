@@ -20,14 +20,17 @@ export default function HackathonForm(props) {
   const [gitLink, setGitLink] = useState("");
   const [otherLink, setOtherLink] = useState("");
 
-  // form to get a submission
+  // form is accessed when user clicks on Upload Submission on the first page AND when user clicks on edit option when a submission is expanded
   const handleSubmitHackathon = (e) => {
     e.preventDefault();
 
+    // when all the parameters have some value in them meaning user wishes to edit it
     if (location.state !== undefined) {
       handleEditSubmission();
       return;
     }
+    // otherwise user wishes to enter a new submission
+    // UPLOADING A NEW SUBMISSION
     const uniqueID = JSON.stringify(new Date().getTime());
     console.log(uniqueID, title, summary, isFavourite);
     const newHackathonSubmission = {
@@ -44,11 +47,9 @@ export default function HackathonForm(props) {
       otherLink,
       date: new Date(),
     };
-    // console.log(localStorage.getItem("storedSubmissions"));
     let storedSubmissions = JSON.parse(
       localStorage.getItem("storedSubmissions")
     );
-    // console.log("stored submissions", storedSubmissions);
     if (storedSubmissions == null) {
       const createdSubmissionList = [newHackathonSubmission];
       localStorage.setItem(
@@ -62,9 +63,10 @@ export default function HackathonForm(props) {
         JSON.stringify(storedSubmissions)
       );
     }
+    // after entering the submission details and pressing upload submission button, user is redirected to home
     history.push("/");
   };
-  //editing an hackathon submission detail
+  //EDITING an hackathon submission detail
   const handleEditSubmission = () => {
     const editedHackathonSubmission = {
       uniqueID,
@@ -84,6 +86,7 @@ export default function HackathonForm(props) {
     let storedSubmissions = JSON.parse(
       localStorage.getItem("storedSubmissions")
     );
+    // check all the existing submissions and if the uniqueID of my present submission matches with the uniqueID of any submissions, then reflect all the edits in it
     for (let i = 0; i < storedSubmissions.length; i++) {
       if (storedSubmissions[i].uniqueID === uniqueID) {
         storedSubmissions[i] = editedHackathonSubmission;
@@ -95,10 +98,10 @@ export default function HackathonForm(props) {
     }
     history.push("/");
   };
+  // Store the uploaded image in the form of readable url which can later again converted into the image when need to be fetched
   const handleImageUpload = (file) => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
-      // console.log("file",file);
       setCoverImg(reader.result);
     });
     reader.readAsDataURL(file);
@@ -106,6 +109,8 @@ export default function HackathonForm(props) {
   const clickImageUpload = () => {
     document.getElementById("cover-img-upload-input").click();
   };
+
+  // updating the values of all the parameters
   useEffect(() => {
     if (location.state !== undefined) {
       let editSubmissionDetails = location.state.submissionDetails;
@@ -135,11 +140,11 @@ export default function HackathonForm(props) {
           <TextField
             id="outlined-basic"
             className="input-value"
-            // label="Outlined"
             variant="outlined"
             placeholder="Title of your submission"
             value={title}
             required={true}
+            // update title whenever changed
             onChange={(e) => {
               setTitle(e.target.value);
             }}
@@ -153,6 +158,7 @@ export default function HackathonForm(props) {
             placeholder="A short summary of your submission. This will be visible with your submission"
             value={summary}
             required={true}
+            // update summary whenever changed
             onChange={(e) => {
               setSummary(e.target.value);
             }}
@@ -166,6 +172,7 @@ export default function HackathonForm(props) {
             placeholder="Write a long description of your project. You can describe your idea and approach here."
             value={description}
             required={true}
+            // update description whenever changed
             onChange={(e) => {
               setDescription(e.target.value);
             }}
@@ -205,6 +212,7 @@ export default function HackathonForm(props) {
             required={true}
             placeholder="Enter the name of the hackathon."
             value={hackathonName}
+            // update hackathonName whenever changed
             onChange={(e) => {
               setHackathonName(e.target.value);
             }}
@@ -224,7 +232,6 @@ export default function HackathonForm(props) {
               }}
               onClick={(e) => {
                 setStartDate(e.target.value);
-                // console.log(typeof e.target.value);
               }}
             />
           </form>
@@ -243,7 +250,6 @@ export default function HackathonForm(props) {
               }}
               onClick={(e) => {
                 setEndDate(e.target.value);
-                // console.log(typeof e.target.value);
               }}
             />
           </form>
@@ -253,11 +259,11 @@ export default function HackathonForm(props) {
           <TextField
             id="outlined-basic"
             className="input-value"
-            // label="Outlined"
             variant="outlined"
             placeholder="Enter your GitHub Repository"
             value={gitLink}
             required={true}
+            // update GitHub Repository whenever changed
             onChange={(e) => {
               setGitLink(e.target.value);
             }}
@@ -268,11 +274,11 @@ export default function HackathonForm(props) {
           <TextField
             id="outlined-basic"
             className="input-value"
-            // label="Outlined"
             variant="outlined"
             placeholder="You can upload a video demo or URL of you demo app here."
             value={otherLink}
             required={true}
+            // update Other Links whenever changed
             onChange={(e) => {
               setOtherLink(e.target.value);
             }}
