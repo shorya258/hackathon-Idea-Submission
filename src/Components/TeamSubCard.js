@@ -1,11 +1,8 @@
-import {
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
-import { useHistory, useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./teamSubCard.css";
+// declare all the props
 const TeamSubCard = (props) => {
   let {
     uniqueID,
@@ -22,8 +19,9 @@ const TeamSubCard = (props) => {
     otherLink,
     presentSubmissions,
   } = props;
+
   let history = useHistory();
-  //sending data to expand card
+  //sending data to "expandCard.js"
   const handleExpandCard = () => {
     history.push({
       pathname: "/ideaDetails",
@@ -43,13 +41,13 @@ const TeamSubCard = (props) => {
       },
     });
   };
+  // function to convert "date user uploaded submission" to "uploaded n days ago" format
   const getUploadedDaysByDate = (date) => {
     const uploadedDate = new Date(date);
     const currentDate = new Date();
     const uploadedDays = Math.floor(
       (currentDate - uploadedDate) / (1000 * 60 * 60 * 24)
     );
-    // console.log("uploadedDate", uploadedDate, "currentDate", currentDate,);
     if (uploadedDays === 0) {
       return "Uploaded just now";
     } else {

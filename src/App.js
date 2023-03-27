@@ -8,14 +8,18 @@ import ExpandCard from "./Components/ExpandCard";
 function App() {
   return (
     <>
+      {/* navbar stays constant through out the web app */}
       <Navbar />
       <Switch>
+        {/* "upload submission" and "submissions" are entities of Main component */}
         <Route exact path="/">
           <Main />
         </Route>
+        {/* hackathon form to submit an user submission */}
         <Route exact path="/submitHackathonIdea">
           <HackathonForm />
         </Route>
+        {/* Expand Card is accessed when user clicks on any card to expand it and get details */}
         <Route exact path="/ideaDetails">
           <ExpandCard />
         </Route>

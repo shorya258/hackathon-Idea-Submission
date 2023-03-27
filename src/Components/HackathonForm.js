@@ -4,7 +4,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import Upload from "../assets/Upload.png";
-import { typeOf } from "react-is";
 export default function HackathonForm(props) {
   let history = useHistory();
   const location = useLocation();
@@ -21,8 +20,7 @@ export default function HackathonForm(props) {
   const [gitLink, setGitLink] = useState("");
   const [otherLink, setOtherLink] = useState("");
 
-  // console.log("edit props", );
-
+  // form to get a submission
   const handleSubmitHackathon = (e) => {
     e.preventDefault();
 
@@ -230,7 +228,6 @@ export default function HackathonForm(props) {
               }}
             />
           </form>
-
         </Box>
         <Box className="form-input end-date">
           <legend className="form-heading">Hackathon End date</legend>
@@ -250,7 +247,6 @@ export default function HackathonForm(props) {
               }}
             />
           </form>
-
         </Box>
         <Box className="form-input github-link">
           <legend className="form-heading">GitHub Repository</legend>
