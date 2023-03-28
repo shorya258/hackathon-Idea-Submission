@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./hackathonForm.css";
+import isUrl from "is-url";
 import { useHistory, useLocation } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Button, TextField } from "@mui/material";
@@ -71,48 +72,45 @@ export default function HackathonForm(props) {
   };
   const validateFormValues = (newHackathonSubmission) => {
     const generatedErrors = {};
-    const regex =
-      /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i;
 
     if (newHackathonSubmission.title.trim().length === 0) {
-      generatedErrors.title = "Title can not be empty!";
+      generatedErrors.title = "*Title can not be empty!";
     } else if (newHackathonSubmission.title.trim().length < 4) {
-      generatedErrors.title = "Title should be at least four characters long!";
+      generatedErrors.title = "*Title should be at least four characters long!";
     }
     if (newHackathonSubmission.summary.trim().length === 0) {
-      generatedErrors.summary = "summary can not be empty!";
+      generatedErrors.summary = "*Summary can not be empty!";
     } else if (newHackathonSubmission.summary.trim().length < 4) {
       generatedErrors.summary =
-        "summary should be at least four characters long!";
+        "*Summary should be at least four characters long!";
     }
     if (newHackathonSubmission.description.trim().length === 0) {
-      generatedErrors.description = "description can not be empty!";
+      generatedErrors.description = "*Description can not be empty!";
     }
     if (newHackathonSubmission.hackathonName.trim().length === 0) {
-      generatedErrors.hackathonName = "Hackathon Name can not be empty!";
+      generatedErrors.hackathonName = "*Hackathon Name can not be empty!";
     } else if (newHackathonSubmission.hackathonName.trim().length < 4) {
       generatedErrors.hackathonName =
-        "Hackathon Name should be at least four characters long!";
+        "*Hackathon Name should be at least four characters long!";
     }
     if (newHackathonSubmission.coverImg === null) {
-      generatedErrors.coverImg = "Choose a cover image!";
+      generatedErrors.coverImg = "*Choose a cover image!";
     }
     if (newHackathonSubmission.gitLink.trim().length === 0) {
-      generatedErrors.gitLink = "GitHub Repository URL can not be empty!";
-    } else if (!regex.value(newHackathonSubmission.gitLink.trim())) {
-      generatedErrors.gitLink = "Enter a valid URL for GitHub Repository!";
+      generatedErrors.gitLink = "*GitHub Repository URL can not be empty!";
+    } else if (!isUrl(newHackathonSubmission.gitLink.trim())) {
+      generatedErrors.gitLink = "*Enter a valid URL for GitHub Repository!";
     }
     if (newHackathonSubmission.startDate.length === 0) {
-      generatedErrors.startDate = "Start Date cannot not be empty!";
+      generatedErrors.startDate = "*Start Date cannot not be empty!";
     }
     if (newHackathonSubmission.endDate.length === 0) {
-      generatedErrors.endDate = "End Date cannot not be empty!";
+      generatedErrors.endDate = "*End Date cannot not be empty!";
     }
     if (newHackathonSubmission.startDate > newHackathonSubmission.endDate) {
       generatedErrors.startGreaterThanEndDate =
-        "Start Date should be less than End Date!";
+        "*Start Date should be less than End Date!";
     }
-    // console.log(coverImg, typeof coverImg);
     setErrorsObj(generatedErrors);
     console.log(generatedErrors);
   };

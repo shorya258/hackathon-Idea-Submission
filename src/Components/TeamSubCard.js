@@ -51,13 +51,13 @@ const TeamSubCard = (props) => {
     if (uploadedDays === 0) {
       return "Uploaded just now";
     } else {
-      return `${uploadedDays}days ago`;
+      return `${uploadedDays} days ago`;
     }
   };
   return (
     <div>
       <Card
-        sx={{ width: "300px" }}
+        sx={{ width: "400px" }}
         className="card-wrapper"
         onClick={handleExpandCard}
       >
