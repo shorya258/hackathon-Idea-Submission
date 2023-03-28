@@ -30,6 +30,9 @@
 .input-value {
   width: 100%;
 }
+.description-input input{
+  height: 5rem !important;
+}
 .cover-img-info {
   color: gray;
   font-size: 0.9rem;
@@ -54,4 +57,7 @@
   color: white !important;
   text-transform: capitalize !important;
   border-radius: 0.5rem !important;
+}
+.error-dialog{
+  color: red;
 }
