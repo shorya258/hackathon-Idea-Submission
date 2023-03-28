@@ -135,7 +135,6 @@ export default function HackathonForm(props) {
       description,
       hackathonName,
       isFavourite,
-      description,
       coverImg,
       startDate,
       endDate,
@@ -190,7 +189,7 @@ export default function HackathonForm(props) {
       setGitLink(editSubmissionDetails.gitLink);
       setOtherLink(editSubmissionDetails.otherLink);
     }
-  }, []);
+  }, [location.state]);
 
   return (
     <div className="form-page">

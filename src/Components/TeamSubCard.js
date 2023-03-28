@@ -17,7 +17,6 @@ const TeamSubCard = (props) => {
     endDate,
     gitLink,
     otherLink,
-    presentSubmissions,
   } = props;
 
   let history = useHistory();

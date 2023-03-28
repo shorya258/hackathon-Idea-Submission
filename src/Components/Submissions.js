@@ -18,7 +18,7 @@ export default function Submissions() {
   const [currentSorting, setCurrentSorting] = useState("newest");
   const [cardAlignment, setCardAlignment] = useState("");
   // hardCoded values for pre-existing submissions
-  const [hardCodedSubmissions, setHardCodedSubmissions] = useState([
+  const [hardCodedSubmissions, _] = useState([
     {
       uniqueID: 101,
       title: "InterView Me",

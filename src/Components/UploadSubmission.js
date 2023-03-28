@@ -20,7 +20,7 @@ const UploadSubmission = () => {
         </Button>
       </div>
       <div className="image-wrapper">
-        <img src={handBulbImage} alt="hand-buld-image" />
+        <img src={handBulbImage} alt="hand and bulb" />
       </div>
     </div>
   );

@@ -103,7 +103,7 @@ const ExpandCard = () => {
         <div className="idea-heading">
           <div className="expanded-content-wrapper">
             <div className="heading-wrapper">
-              <img src={coverImg} className="expanded-card-img" />
+              <img src={coverImg} alt="cover" className="expanded-card-img" />
               <h1 className="expanded-heading">{title}</h1>
             </div>
             <p className="summary-text">{summary}</p>
