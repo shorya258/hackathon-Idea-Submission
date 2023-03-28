@@ -48,7 +48,8 @@ export default function HackathonForm(props) {
       otherLink,
       date: new Date(),
     };
-    if (!validateFormValues(newHackathonSubmission)) {
+    console.log(!validateFormValues(newHackathonSubmission));
+    if (validateFormValues(newHackathonSubmission)) {
       return;
     }
     let storedSubmissions = JSON.parse(
@@ -72,47 +73,61 @@ export default function HackathonForm(props) {
   };
   const validateFormValues = (newHackathonSubmission) => {
     const generatedErrors = {};
-
+    var errorFound = false;
     if (newHackathonSubmission.title.trim().length === 0) {
       generatedErrors.title = "*Title can not be empty!";
+      errorFound = true;
     } else if (newHackathonSubmission.title.trim().length < 4) {
       generatedErrors.title = "*Title should be at least four characters long!";
+      errorFound = true;
     }
     if (newHackathonSubmission.summary.trim().length === 0) {
       generatedErrors.summary = "*Summary can not be empty!";
+      errorFound = true;
     } else if (newHackathonSubmission.summary.trim().length < 4) {
       generatedErrors.summary =
         "*Summary should be at least four characters long!";
+      errorFound = true;
     }
     if (newHackathonSubmission.description.trim().length === 0) {
       generatedErrors.description = "*Description can not be empty!";
+      errorFound = true;
     }
     if (newHackathonSubmission.hackathonName.trim().length === 0) {
       generatedErrors.hackathonName = "*Hackathon Name can not be empty!";
+      errorFound = true;
     } else if (newHackathonSubmission.hackathonName.trim().length < 4) {
       generatedErrors.hackathonName =
         "*Hackathon Name should be at least four characters long!";
+      errorFound = true;
     }
     if (newHackathonSubmission.coverImg === null) {
       generatedErrors.coverImg = "*Choose a cover image!";
+      errorFound = true;
     }
     if (newHackathonSubmission.gitLink.trim().length === 0) {
       generatedErrors.gitLink = "*GitHub Repository URL can not be empty!";
+      errorFound = true;
     } else if (!isUrl(newHackathonSubmission.gitLink.trim())) {
       generatedErrors.gitLink = "*Enter a valid URL for GitHub Repository!";
+      errorFound = true;
     }
     if (newHackathonSubmission.startDate.length === 0) {
       generatedErrors.startDate = "*Start Date cannot not be empty!";
+      errorFound = true;
     }
     if (newHackathonSubmission.endDate.length === 0) {
       generatedErrors.endDate = "*End Date cannot not be empty!";
+      errorFound = true;
     }
     if (newHackathonSubmission.startDate > newHackathonSubmission.endDate) {
       generatedErrors.startGreaterThanEndDate =
         "*Start Date should be less than End Date!";
+      errorFound = true;
     }
     setErrorsObj(generatedErrors);
     console.log(generatedErrors);
+    return errorFound;
   };
   //EDITING an hackathon submission detail
   const handleEditSubmission = () => {
@@ -131,7 +146,7 @@ export default function HackathonForm(props) {
       otherLink,
       date,
     };
-    if (!validateFormValues(editedHackathonSubmission)) {
+    if (validateFormValues(editedHackathonSubmission)) {
       return;
     }
     let storedSubmissions = JSON.parse(
@@ -177,6 +192,7 @@ export default function HackathonForm(props) {
       setHackathonName(editSubmissionDetails.hackathonName);
       setGitLink(editSubmissionDetails.gitLink);
       setOtherLink(editSubmissionDetails.otherLink);
+      console.log(editSubmissionDetails);
     }
   }, []);
 
@@ -293,11 +309,11 @@ export default function HackathonForm(props) {
               id="date"
               label="Start Date"
               type="date"
-              defaultValue="Start Date"
               className="form-input-date-child"
               InputLabelProps={{
                 shrink: true,
               }}
+              value={startDate}
               onChange={(e) => {
                 setStartDate(e.target.value);
               }}
@@ -314,11 +330,11 @@ export default function HackathonForm(props) {
               id="date"
               label="End Date"
               type="date"
-              defaultValue="End Date"
               className="form-input-date-child"
               InputLabelProps={{
                 shrink: true,
               }}
+              value={endDate}
               onChange={(e) => {
                 setEndDate(e.target.value);
               }}
@@ -337,7 +353,7 @@ export default function HackathonForm(props) {
             )}
         </Box>
 
-        <Box className="form-input github-link">
+        <Box className="form-input git-link">
           <legend className="form-heading">GitHub Repository</legend>
           <TextField
             id="outlined-basic"

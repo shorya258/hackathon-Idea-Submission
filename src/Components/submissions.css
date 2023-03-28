@@ -7,6 +7,13 @@
   flex-wrap: wrap;
   align-items: center;
 }
+.center-aligned{
+  justify-content: center;
+}
+.left-aligned{
+  justify-content: flex-start;
+  margin-left: 6.15rem;
+}
 .menu-bar {
   display: flex;
   align-items: center;

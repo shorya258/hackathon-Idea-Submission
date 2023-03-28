@@ -16,6 +16,7 @@ export default function Submissions() {
   const [filteredSubmissions, setFilteredSubmissions] = useState([]);
   const [showFavourite, toggleShowFavourite] = useState(false);
   const [currentSorting, setCurrentSorting] = useState("newest");
+  const [cardAlignment, setCardAlignment] = useState("");
   // hardCoded values for pre-existing submissions
   const [hardCodedSubmissions, setHardCodedSubmissions] = useState([
     {
@@ -56,7 +57,7 @@ export default function Submissions() {
       summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
       description:
         "Lorem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventornam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consecteturem ipsum dolorDolor harum rerum, ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventore quisquam, harum repudiandae reprehenderit doloremque sit fugit dignissimos architecto labore? Voluptatem temporibus inventore nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur",
-      isFavourite: false,
+      isFavourite: true,
       date: new Date(new Date().getTime() - 10 * 24 * 60 * 60 * 1000),
       coverImg: pizzaIpsum,
       hackathonName: "pizzaIpsum",
@@ -172,7 +173,13 @@ export default function Submissions() {
     setFilteredSubmissions(unSortedSubmissions);
   };
 
-  useEffect(() => {}, [currentSorting]);
+  useEffect(() => {
+    if (filteredSubmissions.length % 3 === 0) {
+      setCardAlignment("center");
+    } else {
+      setCardAlignment("left");
+    }
+  }, [filteredSubmissions]);
 
   useEffect(() => {
     let storedSubmissions = JSON.parse(
@@ -236,7 +243,11 @@ export default function Submissions() {
         </div>
       </Toolbar>
 
-      <div className="cards-display">
+      <div
+        className={`cards-display ${
+          cardAlignment === "center" ? "center-aligned" : "left-aligned"
+        }`}
+      >
         {/* map all the entries to the card and send respective props to it */}
         {filteredSubmissions.map((singleIdea) => {
           return (

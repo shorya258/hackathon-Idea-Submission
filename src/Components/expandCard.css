@@ -39,7 +39,7 @@
 }
 .uploaded-date-text {
   margin-left: 2rem;
-  background-color: black;
+  background-color: rgb(37,89,115);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
   display: flex;

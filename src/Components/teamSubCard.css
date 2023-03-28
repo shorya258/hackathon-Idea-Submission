@@ -18,6 +18,7 @@
 .card-summary{
     margin-top: 2rem !important;
     margin-bottom: 2rem !important;
+    min-height: 5rem;
 }
 .card-header{
     display: flex;
@@ -25,6 +26,7 @@
     align-items: center;
     justify-content: flex-start;
 }
+
 .card-date{
     text-align: right;
 }

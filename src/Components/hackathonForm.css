@@ -47,7 +47,12 @@
   background-color: transparent;
 }
 .cover-image {
+  max-height: 400px;
+  object-fit: cover;
   width: 100%;
+}
+.other-link{
+  margin-top: 1rem;
 }
 .character-length {
   text-align: right;
