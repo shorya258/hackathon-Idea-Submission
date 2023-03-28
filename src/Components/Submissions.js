@@ -169,7 +169,6 @@ export default function Submissions() {
         a.date > b.date ? 1 : -1
       );
     }
-    // console.log("unSortedSubmissions after sort", unSortedSubmissions);
     setFilteredSubmissions(unSortedSubmissions);
   };
 

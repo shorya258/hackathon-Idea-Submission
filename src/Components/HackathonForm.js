@@ -33,7 +33,6 @@ export default function HackathonForm(props) {
     // otherwise user wishes to enter a new submission
     // UPLOADING A NEW SUBMISSION
     const uniqueID = JSON.stringify(new Date().getTime());
-    console.log(uniqueID, title, summary, isFavourite);
     const newHackathonSubmission = {
       uniqueID,
       title,
@@ -48,7 +47,6 @@ export default function HackathonForm(props) {
       otherLink,
       date: new Date(),
     };
-    console.log(!validateFormValues(newHackathonSubmission));
     if (validateFormValues(newHackathonSubmission)) {
       return;
     }
@@ -126,7 +124,6 @@ export default function HackathonForm(props) {
       errorFound = true;
     }
     setErrorsObj(generatedErrors);
-    console.log(generatedErrors);
     return errorFound;
   };
   //EDITING an hackathon submission detail
@@ -192,7 +189,6 @@ export default function HackathonForm(props) {
       setHackathonName(editSubmissionDetails.hackathonName);
       setGitLink(editSubmissionDetails.gitLink);
       setOtherLink(editSubmissionDetails.otherLink);
-      console.log(editSubmissionDetails);
     }
   }, []);
 
