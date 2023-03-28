@@ -146,7 +146,9 @@ export default function Submissions() {
   // when title got seached show only submissions that include the title
   const titleGotSearched = () => {
     const currentSub = allSubmissions.filter((singleSubmission) => {
-      return singleSubmission.title.includes(searchTerm);
+      return singleSubmission.title
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
     });
     setFilteredSubmissions(currentSub);
   };

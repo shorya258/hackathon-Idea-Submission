@@ -56,9 +56,13 @@ const TeamSubCard = (props) => {
   };
   return (
     <div>
-      <Card sx={{ width: "300px" }} className="card-wrapper">
+      <Card
+        sx={{ width: "300px" }}
+        className="card-wrapper"
+        onClick={handleExpandCard}
+      >
         <CardContent className="card-content">
-          <div className="card-header" onClick={handleExpandCard}>
+          <div className="card-header">
             <img src={coverImg} className="coverImg" />
 
             <Typography
