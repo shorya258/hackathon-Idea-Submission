@@ -31,11 +31,31 @@ const ExpandCard = () => {
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
   const [open, setOpen] = useState(false);
-
   // handle modal open when clicked on delete option
   const handleOpen = () => setOpen(true);
   // handle modal close
   const handleClose = () => setOpen(false);
+  // converts the date into month
+  const getMonthWiseDate = (date) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const newDay = new Date(date).getDate();
+    const newMonth = months[new Date(date).getMonth()];
+    return newDay + " " + newMonth;
+  };
 
   // when clicked on edit submission, redirect to HackathonForm.js
   const handleEditSubmission = () => {
@@ -76,18 +96,6 @@ const ExpandCard = () => {
       }
     }
   };
-  const getUploadedDaysByDate = (date) => {
-    const uploadedDate = new Date(date);
-    const currentDate = new Date();
-    const uploadedDays = Math.floor(
-      (currentDate - uploadedDate) / (1000 * 60 * 60 * 24)
-    );
-    if (uploadedDays === 0) {
-      return "Uploaded just now";
-    } else {
-      return `${uploadedDays} days ago`;
-    }
-  };
 
   return (
     <>
@@ -113,8 +121,7 @@ const ExpandCard = () => {
               )}
               <p className="uploaded-date-text">
                 {<CalendarToday className="calender-icon" />}
-
-                <span>{getUploadedDaysByDate(date)}</span>
+                <span>{getMonthWiseDate(date)}</span>
               </p>
             </div>
           </div>
@@ -200,7 +207,7 @@ const ExpandCard = () => {
           <div className="duration-dates">
             <CalendarToday sx={{ width: "15px" }} />
             <p>
-              {startDate} - {endDate}
+              {getMonthWiseDate(startDate)} - {getMonthWiseDate(endDate)}
             </p>
           </div>
           <div className="links">
