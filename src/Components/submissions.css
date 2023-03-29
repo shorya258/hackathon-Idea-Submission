@@ -1,3 +1,7 @@
+.padding-container {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
 .menu {
   background-color: rgb(248, 249, 253);
 }
@@ -7,10 +11,10 @@
   flex-wrap: wrap;
   align-items: center;
 }
-.center-aligned{
+.center-aligned {
   justify-content: center;
 }
-.left-aligned{
+.left-aligned {
   justify-content: flex-start;
   margin-left: 6.15rem;
 }
@@ -18,7 +22,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  padding-left: 7rem !important;
+  padding-right: 5rem !important;
 }
 .menu-right-child {
   display: flex;
@@ -27,12 +34,20 @@
 
 .menu-btn {
   border: none;
-  color: black !important;
+  border-radius: 0 !important;
+  text-transform: capitalize !important;
+  font-weight: 400 !important;
+  font-size: 1.1rem !important;
+  margin-right: 1rem !important;
+  padding-bottom: 0% !important;
 }
 .active-btn {
-  border-bottom: green 1px solid !important;
+  box-shadow: 0 5px 0 #44924c;
+  color: black !important;
 }
 .inactive-btn {
+  box-shadow: none;
+  color: gray !important;
   border-bottom: none !important;
 }
 .search-input {
