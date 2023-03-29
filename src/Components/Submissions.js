@@ -42,7 +42,7 @@ export default function Submissions() {
         "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
       description:
         "Lorem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventoripsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventor",
-      isFavourite: false,
+      isFavourite: true,
       date: new Date(new Date().getTime() - 12 * 24 * 60 * 60 * 1000),
       coverImg: loremIpsum,
       hackathonName: "hackathon-2",
@@ -116,6 +116,8 @@ export default function Submissions() {
   ]);
   // handle favourites to display only favourite cards
   const handleShowFavourite = (currentValue) => {
+    setSearchTerm("");
+    handleSearchBar("");
     if (currentValue === "all") {
       toggleShowFavourite(false);
       filterFavourites(false);
@@ -125,7 +127,6 @@ export default function Submissions() {
     }
   };
   const filterFavourites = (showFavourite) => {
-    handleSearchBar("");
     if (showFavourite) {
       const currentSub = filteredSubmissions.filter((singleSubmission) => {
         return singleSubmission.isFavourite === true;
@@ -141,11 +142,13 @@ export default function Submissions() {
     // when searched term = nothing, show all values
     setSearchTerm(searchedValue);
     if (searchedValue.length === 0) {
-      setFilteredSubmissions(allSubmissions);
+      filterFavourites(false);
+      toggleShowFavourite(false);
+      handleSorting(currentSorting, filteredSubmissions);
     }
   };
   // when title got seached show only submissions that include the title
-  const titleGotSearched = () => {
+  const titleGotSearched = (searchTerm) => {
     const currentSub = allSubmissions.filter((singleSubmission) => {
       return singleSubmission.title
         .toLowerCase()
@@ -220,13 +223,16 @@ export default function Submissions() {
 
         <div className="menu-right-child">
           <div className="search-opt">
-            <SearchIcon onClick={titleGotSearched} />
+            <SearchIcon />
             <input
               className="search-input"
               type="text"
               value={searchTerm}
               placeholder="Search"
-              onChange={(e) => handleSearchBar(e.target.value)}
+              onChange={(e) => {
+                handleSearchBar(e.target.value);
+                titleGotSearched(e.target.value);
+              }}
             />
           </div>
           <div className="sorting-button-wrapper">
