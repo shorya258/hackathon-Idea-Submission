@@ -1,32 +1,32 @@
-.card-wrapper{
-    margin: 20px;
-    box-shadow: 20px;
-    cursor: pointer !important;
-    /* margin-bottom: 30px; */
+.card-wrapper {
+  margin: 20px;
+  box-shadow: 1px 2px 4px black !important;
+  cursor: pointer !important;
+  /* margin-bottom: 30px; */
 }
-.coverImg{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 1rem;
-    margin-right: 1rem;
+.coverImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-right: 1rem;
 }
-.card-content{
-    display: flex;
-    flex-direction: column;
+.card-content {
+  display: flex;
+  flex-direction: column;
 }
-.card-summary{
-    margin-top: 2rem !important;
-    margin-bottom: 2rem !important;
-    min-height: 5rem;
+.card-summary {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  min-height: 5rem;
 }
-.card-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.card-date{
-    text-align: right;
+.card-date {
+  text-align: right;
 }
