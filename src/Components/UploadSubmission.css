@@ -6,19 +6,22 @@
   /* background-color: ; */
   background-repeat: no-repeat;
   color: white !important;
-  padding: 40px 70px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .content-wrapper {
   display: flex;
   margin: auto;
   flex-direction: column;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-right: 10%;
+  padding-right: 15%;
 }
 .content-wrapper h1 {
   margin-bottom: 0rem;
+  font-size: 2.5rem;
   font-weight: 600;
+}
+.content-wrapper p {
+  font-size: 1.2rem;
 }
 .UploadSubmission .content-wrapper button {
   color: white !important;

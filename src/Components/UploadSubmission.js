@@ -6,7 +6,7 @@ import handBulbImage from "../assets/handBulbImage.png";
 const UploadSubmission = () => {
   let history = useHistory();
   return (
-    <div className="UploadSubmission">
+    <div className="UploadSubmission padding-container">
       <div className="content-wrapper">
         <h1 className="heading">Hackathon Submissions</h1>
         <p>

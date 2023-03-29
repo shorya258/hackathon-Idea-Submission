@@ -201,7 +201,7 @@ export default function Submissions() {
 
   return (
     <div className="menu">
-      <Toolbar className="menu-bar">
+      <Toolbar className="menu-bar padding-container">
         <div className="menu-left-child">
           <Button
             className={
