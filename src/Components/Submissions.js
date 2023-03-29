@@ -155,12 +155,11 @@ export default function Submissions() {
   };
 
   // function to handle date-wise sorting
-  const handleSorting = (e) => {
-    setCurrentSorting(e.target.value);
-    var unSortedSubmissions = filteredSubmissions;
-
+  const handleSorting = (currentSort, filteredSubmissions) => {
+    setCurrentSorting(currentSort);
+    let unSortedSubmissions = filteredSubmissions;
     // if selected option is newsest, show newest submissions first and vice versa
-    if (e.target.value === "newest") {
+    if (currentSort === "newest") {
       unSortedSubmissions = unSortedSubmissions.sort((a, b) =>
         a.date < b.date ? 1 : -1
       );
@@ -194,6 +193,7 @@ export default function Submissions() {
     }
     setAllSubmissions(storedSubmissions);
     setFilteredSubmissions(storedSubmissions);
+    handleSorting("newest", storedSubmissions);
   }, []);
 
   return (
@@ -232,7 +232,9 @@ export default function Submissions() {
           <div className="sorting-button-wrapper">
             <select
               className="sorting-button"
-              onChange={handleSorting}
+              onChange={(e) =>
+                handleSorting(e.target.value, filteredSubmissions)
+              }
               value={currentSorting}
             >
               <option value="newest">Newest</option>
