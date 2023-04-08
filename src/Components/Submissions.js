@@ -119,10 +119,10 @@ export default function Submissions() {
     setSearchTerm("");
     handleSearchBar("");
     if (currentValue === "all") {
-      // toggleShowFavourite(false);
+      toggleShowFavourite(false);
       filterFavourites(false);
     } else {
-      // toggleShowFavourite(true);
+      toggleShowFavourite(true);
       filterFavourites(true);
     }
   };
@@ -142,19 +142,28 @@ export default function Submissions() {
     // when searched term = nothing, show all values
     setSearchTerm(searchedValue);
     if (searchedValue.length === 0) {
-      filterFavourites(false);
-      toggleShowFavourite(false);
+      // filterFavourites(false);
+      // toggleShowFavourite(false);
       handleSorting(currentSorting, filteredSubmissions);
     }
   };
   // when title got seached show only submissions that include the title
   const titleGotSearched = (searchTerm) => {
-    const currentSub = allSubmissions.filter((singleSubmission) => {
+    const searchedSubmissions = allSubmissions.filter((singleSubmission) => {
       return singleSubmission.title
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
     });
-    setFilteredSubmissions(currentSub);
+    if (showFavourite) {
+      const searchedSubmissionsWithFavourite = searchedSubmissions.filter(
+        (singleSubmission) => {
+          return singleSubmission.isFavourite === true;
+        }
+      );
+      setFilteredSubmissions(searchedSubmissionsWithFavourite);
+    } else {
+      setFilteredSubmissions(searchedSubmissions);
+    }
   };
 
   // function to handle date-wise sorting
@@ -180,6 +189,7 @@ export default function Submissions() {
     } else {
       setCardAlignment("left");
     }
+    handleSorting(currentSorting, filteredSubmissions);
   }, [filteredSubmissions]);
 
   useEffect(() => {
