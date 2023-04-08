@@ -20,7 +20,7 @@ export default function Submissions() {
   // hardCoded values for pre-existing submissions
   const [hardCodedSubmissions, _] = useState([
     {
-      uniqueID: 101,
+      uniqueID: JSON.stringify(new Date().getTime() - 4),
       title: "InterView Me",
       summary:
         "Built with GPT-3, React, and Flask. Practice interviews with AI and ace your next interview.",
@@ -36,7 +36,7 @@ export default function Submissions() {
       endDate: "2023-07-09",
     },
     {
-      uniqueID: 102,
+      uniqueID: JSON.stringify(new Date().getTime() - 10),
       title: "Lorem Ipsum",
       summary:
         "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
@@ -52,7 +52,7 @@ export default function Submissions() {
       endDate: "2023-09-12",
     },
     {
-      uniqueID: 103,
+      uniqueID: JSON.stringify(new Date().getTime() - 9),
       title: "Pizza Ipsum",
       summary: "Pizza ipsum dolor meat lovers buffalo. Burnt melted NY.",
       description:
@@ -67,7 +67,7 @@ export default function Submissions() {
       endDate: "2024-12-23",
     },
     {
-      uniqueID: 104,
+      uniqueID: JSON.stringify(new Date().getTime() - 2),
       title: "Potter Ipsum",
       summary:
         "Potter ipsum wand elf parchment wingardium. Ghost glass hall tears hair must train. Snape alohamora bathrooms.",
@@ -83,7 +83,7 @@ export default function Submissions() {
       endDate: "2023-06-30",
     },
     {
-      uniqueID: 105,
+      uniqueID: JSON.stringify(new Date().getTime() - 1),
       title: "Figma Ipsum",
       summary:
         "Figma ipsum component variant main layer. Blur hand object thumbnail subtract flows font bold image. Font.",
@@ -99,7 +99,7 @@ export default function Submissions() {
       endDate: "2023-05-06",
     },
     {
-      uniqueID: 106,
+      uniqueID: JSON.stringify(new Date().getTime()),
       title: "Office Ipsum",
       summary: "Office ipsum you must be muted.",
       coverImg: office,
@@ -117,10 +117,10 @@ export default function Submissions() {
   // handle favourites to display only favourite cards
   const handleShowFavourite = (currentValue) => {
     if (currentValue === "all") {
-      toggleShowFavourite(false);
+      // toggleShowFavourite(false);
       filterFavourites(false);
     } else {
-      toggleShowFavourite(true);
+      // toggleShowFavourite(true);
       filterFavourites(true);
     }
   };
@@ -200,6 +200,7 @@ export default function Submissions() {
     <div className="menu">
       <Toolbar className="menu-bar">
         <div className="menu-left-child">
+          {/* SHOW ALL OR SHOW FAVOURITES */}
           <Button
             className={
               showFavourite ? "menu-btn inactive-btn" : "menu-btn active-btn"
@@ -219,6 +220,7 @@ export default function Submissions() {
         </div>
 
         <div className="menu-right-child">
+          {/* SEARCH OPTION */}
           <div className="search-opt">
             <SearchIcon onClick={titleGotSearched} />
             <input
@@ -229,6 +231,7 @@ export default function Submissions() {
               onChange={(e) => handleSearchBar(e.target.value)}
             />
           </div>
+          {/* SORTING */}
           <div className="sorting-button-wrapper">
             <select
               className="sorting-button"
@@ -265,6 +268,7 @@ export default function Submissions() {
               gitLink={singleIdea.gitLink}
               otherLink={singleIdea.otherLink}
               presentSubmissions={filteredSubmissions}
+              // hardCodedSubmissions={hardCodedSubmissions}
             />
           );
         })}

@@ -17,6 +17,7 @@ const TeamSubCard = (props) => {
     endDate,
     gitLink,
     otherLink,
+    // hardCodedSubmissions,
   } = props;
 
   let history = useHistory();
@@ -25,18 +26,19 @@ const TeamSubCard = (props) => {
     history.push({
       pathname: "/ideaDetails",
       state: {
-        uniqueID: uniqueID,
-        title: title,
-        summary: summary,
-        description: description,
-        date: date,
-        startDate: startDate,
-        endDate: endDate,
-        coverImg: coverImg,
-        isFavourite: isFavourite,
-        hackathonName: hackathonName,
-        gitLink: gitLink,
-        otherLink: otherLink,
+        uniqueID,
+        title,
+        summary,
+        description,
+        date,
+        startDate,
+        endDate,
+        coverImg,
+        isFavourite,
+        hackathonName,
+        gitLink,
+        otherLink,
+        // hardCodedSubmissions,
       },
     });
   };
@@ -62,7 +64,7 @@ const TeamSubCard = (props) => {
       >
         <CardContent className="card-content">
           <div className="card-header">
-            <img src={coverImg} className="coverImg" />
+            <img src={coverImg} alt="cover img" className="coverImg" />
 
             <Typography
               className="card-heading"

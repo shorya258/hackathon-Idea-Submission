@@ -28,6 +28,7 @@ const ExpandCard = () => {
   const gitLink = location.state.gitLink;
   const otherLink = location.state.otherLink;
   const isFavourite = location.state.isFavourite;
+  // const hardCodedSubmissions = location.state.hardCodedSubmissions;
   const [currentFavouriteState, toggleCurrentFavouriteState] =
     useState(isFavourite);
   const [open, setOpen] = useState(false);
@@ -71,7 +72,7 @@ const ExpandCard = () => {
     for (let i = 0; i < storedSubmissions.length; i++) {
       var singleSubmission = storedSubmissions[i];
       if (singleSubmission.uniqueID === uniqueID) {
-        storedSubmissions.splice(i, i);
+        storedSubmissions.splice(i, 1);
         localStorage.setItem(
           "storedSubmissions",
           JSON.stringify(storedSubmissions)
@@ -159,31 +160,30 @@ const ExpandCard = () => {
                   Delete Model
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  <p>
-                    This action is irreversible. Are you sure you want to delete
-                    this model?
-                  </p>
-                  <div className="modal-options">
-                    <Button
-                      variant="outlined"
-                      color="success"
-                      onClick={() => {
-                        history.push({
-                          pathname: "/",
-                        });
-                      }}
-                    >
-                      Cancel
-                    </Button>
-                    <Button
-                      variant="contained"
-                      onClick={handleDeleteSubmission}
-                      color="error"
-                    >
-                      Delete
-                    </Button>
-                  </div>
+                  This action is irreversible. Are you sure you want to delete
+                  this model?
                 </Typography>
+
+                <div className="modal-options">
+                  <Button
+                    variant="outlined"
+                    color="success"
+                    onClick={() => {
+                      history.push({
+                        pathname: "/",
+                      });
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={handleDeleteSubmission}
+                    color="error"
+                  >
+                    Delete
+                  </Button>
+                </div>
               </Box>
             </Modal>
             <p>Delete</p>
