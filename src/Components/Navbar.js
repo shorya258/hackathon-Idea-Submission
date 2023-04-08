@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <div>
       <AppBar position="static" variant="" sx={{ bgcolor: "white" }}>
-        <Toolbar>
+        <Toolbar className="padding-container">
           <Box
             component="img"
             sx={{

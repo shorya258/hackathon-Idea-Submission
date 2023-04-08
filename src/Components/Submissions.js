@@ -42,7 +42,7 @@ export default function Submissions() {
         "Lorem ipsum dolor sit amet consectetur. Auctor nibh eleifend tempus egestas libero tristique nec.",
       description:
         "Lorem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium cusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventororem ipsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventoripsum nam corporis ipsum voluptatibus, officia reiciendis iusto quae, eos non. Commodi voluptas minima qui nostrum consequuntur similique sed sit amet consectetur adipisicing elit. Mollitia et nihil consectetur ex saepe iure aliquid nobis perferendis, voluptatem tenetur id omnis minus accusantium ipsam quibusdam obcaecati incidunt, aut quaerat. Perferendis ipsa, sapiente deleniti vitae sint atque non inventor",
-      isFavourite: false,
+      isFavourite: true,
       date: new Date(new Date().getTime() - 12 * 24 * 60 * 60 * 1000),
       coverImg: loremIpsum,
       hackathonName: "hackathon-2",
@@ -116,6 +116,8 @@ export default function Submissions() {
   ]);
   // handle favourites to display only favourite cards
   const handleShowFavourite = (currentValue) => {
+    setSearchTerm("");
+    handleSearchBar("");
     if (currentValue === "all") {
       // toggleShowFavourite(false);
       filterFavourites(false);
@@ -125,7 +127,6 @@ export default function Submissions() {
     }
   };
   const filterFavourites = (showFavourite) => {
-    handleSearchBar("");
     if (showFavourite) {
       const currentSub = filteredSubmissions.filter((singleSubmission) => {
         return singleSubmission.isFavourite === true;
@@ -141,11 +142,13 @@ export default function Submissions() {
     // when searched term = nothing, show all values
     setSearchTerm(searchedValue);
     if (searchedValue.length === 0) {
-      setFilteredSubmissions(allSubmissions);
+      filterFavourites(false);
+      toggleShowFavourite(false);
+      handleSorting(currentSorting, filteredSubmissions);
     }
   };
   // when title got seached show only submissions that include the title
-  const titleGotSearched = () => {
+  const titleGotSearched = (searchTerm) => {
     const currentSub = allSubmissions.filter((singleSubmission) => {
       return singleSubmission.title
         .toLowerCase()
@@ -155,12 +158,11 @@ export default function Submissions() {
   };
 
   // function to handle date-wise sorting
-  const handleSorting = (e) => {
-    setCurrentSorting(e.target.value);
-    var unSortedSubmissions = filteredSubmissions;
-
+  const handleSorting = (currentSort, filteredSubmissions) => {
+    setCurrentSorting(currentSort);
+    let unSortedSubmissions = filteredSubmissions;
     // if selected option is newsest, show newest submissions first and vice versa
-    if (e.target.value === "newest") {
+    if (currentSort === "newest") {
       unSortedSubmissions = unSortedSubmissions.sort((a, b) =>
         a.date < b.date ? 1 : -1
       );
@@ -194,11 +196,12 @@ export default function Submissions() {
     }
     setAllSubmissions(storedSubmissions);
     setFilteredSubmissions(storedSubmissions);
+    handleSorting("newest", storedSubmissions);
   }, []);
 
   return (
     <div className="menu">
-      <Toolbar className="menu-bar">
+      <Toolbar className="menu-bar padding-container">
         <div className="menu-left-child">
           {/* SHOW ALL OR SHOW FAVOURITES */}
           <Button
@@ -222,20 +225,25 @@ export default function Submissions() {
         <div className="menu-right-child">
           {/* SEARCH OPTION */}
           <div className="search-opt">
-            <SearchIcon onClick={titleGotSearched} />
+            <SearchIcon />
             <input
               className="search-input"
               type="text"
               value={searchTerm}
               placeholder="Search"
-              onChange={(e) => handleSearchBar(e.target.value)}
+              onChange={(e) => {
+                handleSearchBar(e.target.value);
+                titleGotSearched(e.target.value);
+              }}
             />
           </div>
           {/* SORTING */}
           <div className="sorting-button-wrapper">
             <select
               className="sorting-button"
-              onChange={handleSorting}
+              onChange={(e) =>
+                handleSorting(e.target.value, filteredSubmissions)
+              }
               value={currentSorting}
             >
               <option value="newest">Newest</option>
