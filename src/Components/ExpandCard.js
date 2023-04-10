@@ -155,6 +155,7 @@ const ExpandCard = () => {
                   boxShadow: 24,
                   p: 4,
                 }}
+                className="modal-box"
               >
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                   Delete Model
