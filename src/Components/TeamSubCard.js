@@ -17,7 +17,6 @@ const TeamSubCard = (props) => {
     endDate,
     gitLink,
     otherLink,
-    // hardCodedSubmissions,
   } = props;
 
   let history = useHistory();
@@ -38,7 +37,6 @@ const TeamSubCard = (props) => {
         hackathonName,
         gitLink,
         otherLink,
-        // hardCodedSubmissions,
       },
     });
   };

@@ -116,8 +116,10 @@ export default function Submissions() {
   ]);
   // handle favourites to display only favourite cards
   const handleShowFavourite = (currentValue) => {
+    // make the search bar blank
     setSearchTerm("");
     handleSearchBar("");
+
     if (currentValue === "all") {
       toggleShowFavourite(false);
       filterFavourites(false);
@@ -127,6 +129,7 @@ export default function Submissions() {
     }
   };
   const filterFavourites = (showFavourite) => {
+    // if showFavourite = true => render only favourite submissions
     if (showFavourite) {
       const currentSub = filteredSubmissions.filter((singleSubmission) => {
         return singleSubmission.isFavourite === true;
@@ -154,14 +157,17 @@ export default function Submissions() {
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
     });
+    // when user is searching in favourite submissions i.e. showFavourite= true
     if (showFavourite) {
       const searchedSubmissionsWithFavourite = searchedSubmissions.filter(
         (singleSubmission) => {
           return singleSubmission.isFavourite === true;
         }
       );
+      // show matching searched results in favourite submissions
       setFilteredSubmissions(searchedSubmissionsWithFavourite);
     } else {
+      // otherwise show matching searched results in all submissions
       setFilteredSubmissions(searchedSubmissions);
     }
   };

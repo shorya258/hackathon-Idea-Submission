@@ -25,7 +25,7 @@ export default function HackathonForm(props) {
   const handleSubmitHackathon = (e) => {
     e.preventDefault();
 
-    // when all the parameters have some value in them meaning user wishes to edit it
+    // when all the parameters have some value in them => meaning user wishes to edit it
     if (location.state !== undefined) {
       handleEditSubmission();
       return;
