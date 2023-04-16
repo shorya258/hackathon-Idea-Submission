@@ -73,3 +73,11 @@
   text-align: left;
   padding: 1rem !important;
 }
+@media (max-width:667px) {
+  .menu-left-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+}
