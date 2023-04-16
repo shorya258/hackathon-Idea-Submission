@@ -50,7 +50,7 @@ const TeamSubCard = (props) => {
     if (uploadedDays === 0) {
       return "Uploaded just now";
     } else {
-      return `${uploadedDays} days ago`;
+      return `Uploaded ${uploadedDays} days ago`;
     }
   };
   return (
