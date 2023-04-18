@@ -138,6 +138,16 @@
   .expanded-card-wrapper{
     flex-direction: column;
   }
+  .expanded-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .expanded-card-img{
+    width: 140px;
+    margin-right: 1rem;
+  }
   .card-details-content{
     display: flex;
     flex-direction: column;
@@ -148,7 +158,6 @@
     width: 100%;
   }
   .modal-box{
-    margin: auto 2rem !important;
     width: 250px !important;
   }
 }
