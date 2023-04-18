@@ -2,7 +2,7 @@
   height: 40%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   background: right bottom url("../assets/waves.png") rgb(0, 49, 69);
   background-repeat: no-repeat;
   color: white !important;
@@ -80,7 +80,7 @@
 .card-details-content {
   height: 60%;
   display: flex;
-  padding: 2rem 6rem;
+  padding: 2rem 7rem;
   justify-content: space-between;
 }
 .card-details-left {
@@ -143,21 +143,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1.5rem 0 1rem 0;
+  }
+  .expanded-heading{
+    font-size: 1.5rem;
   }
   .expanded-card-img{
-    width: 140px;
+    height: 115px;
     margin-right: 1rem;
   }
   .card-details-content{
     display: flex;
     flex-direction: column;
-    padding: 2rem 2rem;
+    padding: 0 2rem;
     text-align: justify;
+  }
+  .uploaded-date-text{
+    padding: 0.4rem 1.2rem;
   }
   .card-details-left{
     width: 100%;
   }
   .modal-box{
     width: 250px !important;
+  }
+  .btn-child{
+    margin: 0.6rem 0rem;
   }
 }

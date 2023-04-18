@@ -100,7 +100,7 @@ const ExpandCard = () => {
 
   return (
     <>
-      <div className="expanded-card-wrapper">
+      <div className="expanded-card-wrapper padding-container">
         <div className="idea-heading">
           <div className="expanded-content-wrapper">
             <div className="heading-wrapper">
