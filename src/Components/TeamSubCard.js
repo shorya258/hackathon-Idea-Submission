@@ -75,7 +75,7 @@ const TeamSubCard = (props) => {
           </div>
           <Typography className="card-summary">{summary}</Typography>
           <Typography className="card-date">
-            {getUploadedDaysByDate(date)}
+            <i>{getUploadedDaysByDate(date)}</i>
           </Typography>
         </CardContent>
       </Card>
