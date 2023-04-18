@@ -134,3 +134,21 @@
   margin: 0.5rem 0;
   font-size: 0.8rem;
 }
+@media screen and (max-width:1100px) {
+  .expanded-card-wrapper{
+    flex-direction: column;
+  }
+  .card-details-content{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem;
+    text-align: justify;
+  }
+  .card-details-left{
+    width: 100%;
+  }
+  .modal-box{
+    margin: auto 2rem !important;
+    width: 250px !important;
+  }
+}
