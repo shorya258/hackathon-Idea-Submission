@@ -8,7 +8,12 @@ const UploadSubmission = () => {
   return (
     <div className="UploadSubmission padding-container">
       <div className="content-wrapper">
-        <h1 className="heading">Hackathon Submissions</h1>
+        <div className="main-heading-wrapper">
+          <h1 className="heading">Hackathon Submissions</h1>
+          <div className="image-wrapper-mobile">
+            <img src={handBulbImage} alt="hand and bulb" />
+          </div>
+        </div>
         <p>
           Lorem ipsum dolor sit amet consectetur. Urna cursus amet pellentesque
           in parturient purus feugiat faucibus. Congue laoreet duis porta turpis
@@ -19,7 +24,7 @@ const UploadSubmission = () => {
           Upload Submission
         </Button>
       </div>
-      <div className="image-wrapper">
+      <div className="image-wrapper-desktop">
         <img src={handBulbImage} alt="hand and bulb" />
       </div>
     </div>
