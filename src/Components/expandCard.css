@@ -39,7 +39,7 @@
 }
 .uploaded-date-text {
   margin-left: 2rem;
-  background-color: rgb(37,89,115);
+  background-color: rgb(37, 89, 115);
   padding: 0.4rem 1rem;
   border-radius: 2rem;
   display: flex;
@@ -68,11 +68,11 @@
 .expanded-icon {
   margin-right: 0.5rem;
 }
-.modal-box{
+.modal-box {
   border: none;
   border-radius: 1.2rem;
 }
-.modal-options{
+.modal-options {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1.4rem;
@@ -105,7 +105,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
-  color: rgb(46,46,46);
+  color: rgb(46, 46, 46);
 }
 .duration-dates p {
   font-size: 0.7rem;
@@ -134,40 +134,48 @@
   margin: 0.5rem 0;
   font-size: 0.8rem;
 }
-@media screen and (max-width:1100px) {
-  .expanded-card-wrapper{
+@media screen and (max-width: 1100px) {
+  .expanded-card-wrapper {
     flex-direction: column;
   }
-  .expanded-content-wrapper{
+  .expanded-content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1.5rem 0 1rem 0;
   }
-  .expanded-heading{
+  .expanded-heading {
     font-size: 1.5rem;
   }
-  .expanded-card-img{
+  .expanded-card-img {
     height: 115px;
     margin-right: 1rem;
   }
-  .card-details-content{
+  .card-details-content {
     display: flex;
     flex-direction: column;
     padding: 0 2rem;
     text-align: justify;
   }
-  .uploaded-date-text{
+  .uploaded-date-text {
     padding: 0.4rem 1.2rem;
   }
-  .card-details-left{
+  .card-details-left {
     width: 100%;
   }
-  .modal-box{
+  .heading-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .modal-box {
     width: 250px !important;
   }
-  .btn-child{
+  .btn-div {
+    margin-top: 1rem;
+  }
+  .btn-child {
     margin: 0.6rem 0rem;
   }
 }

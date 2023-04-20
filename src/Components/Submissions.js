@@ -217,7 +217,7 @@ export default function Submissions() {
 
   return (
     <div className="menu">
-      <Toolbar className="menu-bar padding-container">
+      <Toolbar className="menu-bar padding-container-short">
         <div className="menu-left-child">
           {/* SHOW ALL OR SHOW FAVOURITES */}
           <Button
