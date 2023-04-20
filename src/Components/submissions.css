@@ -73,9 +73,30 @@
   text-align: left;
   padding: 1rem !important;
 }
-@media screen and (max-width:1100px) {
-  .menu-left-child{
+@media screen and (max-width: 1100px) {
+  .cards-display {
+    padding: 0 2rem;
+    justify-content: stretch;
+  }
+  .cards-display > div {
+    width: 100% !important;
+  }
+  .menu-bar {
+    flex-direction: column;
+  }
+  .menu-left-child {
     display: flex;
     flex-direction: row;
+  }
+  .search-opt {
+    padding: 0.5rem;
+  }
+  .search-opt > input {
+    width: 120px;
+  }
+  .card-wrapper {
+    margin: 20px auto !important;
+    min-width: 100%;
+    width: auto !important;
   }
 }
